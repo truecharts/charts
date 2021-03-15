@@ -5,7 +5,7 @@
 image:
   repository: zwavejs/zwavejs2mqtt
   pullPolicy: IfNotPresent
-  tag: 1.1.1
+  tag: 2.3.0
 
 strategy:
   type: Recreate
