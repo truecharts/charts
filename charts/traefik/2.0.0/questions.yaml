@@ -332,7 +332,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   default: 9000
               - variable: protocol
                 label: "Protocol"
@@ -353,7 +353,7 @@ questions:
                   type: int
                   required: true
                   hidden: true
-                  default: 80
+                  default: 8080
               - variable: expose
                 label: "Expose to Outside"
                 description: "Port to the outside of all(!) nodes"
@@ -365,7 +365,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 80
               - variable: protocol
@@ -414,7 +414,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 443
               - variable: protocol
@@ -449,7 +449,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: false
                   default: 32400
               - variable: protocol
@@ -484,7 +484,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 1688
               - variable: protocol
@@ -519,7 +519,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 53
               - variable: protocol
@@ -554,7 +554,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 53
               - variable: protocol
@@ -589,7 +589,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 3478
               - variable: protocol
@@ -624,7 +624,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 3478
               - variable: protocol
@@ -659,7 +659,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 51413
               - variable: protocol
@@ -694,7 +694,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 51413
               - variable: protocol
@@ -729,7 +729,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 1812
               - variable: protocol
@@ -764,7 +764,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 1813
               - variable: protocol
@@ -799,7 +799,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 636
               - variable: protocol
@@ -835,7 +835,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: int
-                  show_if: [["exposedPort", "=", true]]
+                  show_if: [["expose", "=", true]]
                   required: true
                   default: 8080
               - variable: protocol
