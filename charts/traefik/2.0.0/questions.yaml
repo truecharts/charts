@@ -353,7 +353,7 @@ questions:
                   type: int
                   required: true
                   hidden: true
-                  default: 8080
+                  default: 8081
               - variable: expose
                 label: "Expose to Outside"
                 description: "Port to the outside of all(!) nodes"
