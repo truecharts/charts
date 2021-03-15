@@ -359,7 +359,7 @@ questions:
                 description: "Port to the outside of all(!) nodes"
                 schema:
                   type: boolean
-                  default: false
+                  default: true
               - variable: exposedPort
                 label: "Outside Port"
                 description: "Port to the outside of all(!) nodes"
