@@ -30,6 +30,8 @@ securityContext:
 {{- if not .Values.startAsRoot }}
   runAsUser: {{ .Values.PUID }}
   runAsGroup: {{ .Values.PGID }}
+  fsGroup: {{ .Values.PGID }}
+  supplementalGroups: [5,20,24,44,122]
   runAsNonRoot: true
 {{- end }}
 {{- with .Values.podSecurityContext }}
