@@ -253,6 +253,40 @@ questions:
                       schema:
                         type: hostpath
                         required: true
+        # platformio ------------------------
+        - variable: platformio
+          label: "platformio"
+          schema:
+            hidden: true
+            type: dict
+            $ref:
+              - "normalize/ixVolume"
+            attrs:
+              - variable: enabled
+                label: "Enabled"
+                schema:
+                  type: boolean
+                  default: true
+              - variable: setPermissions
+                label: "Automatic Permissions"
+                schema:
+                  type: boolean
+                  default: true
+              - variable: emptyDir
+                label: "Empty Dir"
+                schema:
+                  type: boolean
+                  default: false
+              - variable: datasetName
+                label: "Dataset Name"
+                schema:
+                  type: string
+                  default: "platformio"
+              - variable: mountPath
+                label: "Mount Path"
+                schema:
+                  type: path
+                  default: "/.platformio"
 
   - variable: additionalAppVolumeMounts
     label: "Custom app storage"
