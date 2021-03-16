@@ -9,6 +9,9 @@ image:
 strategy:
   type: Recreate
 
+# 44=video 107=render
+supplementalGroups: 44,107
+
 services:
   main:
     port:

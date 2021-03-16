@@ -11,6 +11,9 @@ image:
 
 startAsRoot: true
 
+# 24=cdrom 44=video 107=render
+supplementalGroups: 24,44,107
+
 #All values here are set as the docker defaults.
 envTpl:
 # Permissions Settings

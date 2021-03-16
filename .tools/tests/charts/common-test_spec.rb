@@ -42,7 +42,21 @@ class Test < ChartTest
       it 'defaults to false = runAs 568' do
         jq('.spec.template.spec.securityContext.runAsUser', resource('Deployment')).must_equal 568
         jq('.spec.template.spec.securityContext.runAsGroup', resource('Deployment')).must_equal 568
+        jq('.spec.template.spec.securityContext.fsGroup', resource('Deployment')).must_equal 568
         jq('.spec.template.spec.securityContext.runAsNonRoot', resource('Deployment')).must_equal true
+        jq('.spec.template.spec.securityContext.supplementalGroups', resource('Deployment')).must_equal []
+      end
+
+      it 'allow settingsupplementalGroups' do
+        values = {
+          supplementalGroups: "5,20"
+        }
+        chart.value values
+        jq('.spec.template.spec.securityContext.runAsUser', resource('Deployment')).must_equal 568
+        jq('.spec.template.spec.securityContext.runAsGroup', resource('Deployment')).must_equal 568
+        jq('.spec.template.spec.securityContext.fsGroup', resource('Deployment')).must_equal 568
+        jq('.spec.template.spec.securityContext.runAsNonRoot', resource('Deployment')).must_equal true
+        jq('.spec.template.spec.securityContext.supplementalGroups', resource('Deployment')).must_equal [5,20]
       end
 
       it 'can be enabled = runAs nil' do
@@ -50,6 +64,8 @@ class Test < ChartTest
         jq('.spec.template.spec.securityContext.runAsUser', resource('Deployment')).must_equal nil
         jq('.spec.template.spec.securityContext.runAsGroup', resource('Deployment')).must_equal nil
         jq('.spec.template.spec.securityContext.runAsNonRoot', resource('Deployment')).must_equal nil
+        jq('.spec.template.spec.securityContext.fsGroup', resource('Deployment')).must_equal nil
+        jq('.spec.template.spec.securityContext.supplementalGroups', resource('Deployment')).must_equal nil
       end
     end
 

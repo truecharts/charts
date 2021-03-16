@@ -31,7 +31,8 @@ securityContext:
   runAsUser: {{ .Values.PUID }}
   runAsGroup: {{ .Values.PGID }}
   fsGroup: {{ .Values.PGID }}
-  supplementalGroups: [5,20,24,44,122]
+  # 5=tty 20=dailout 24=cdrom 44=video 107=render
+  supplementalGroups: [{{- .Values.supplementalGroups }}]
   runAsNonRoot: true
 {{- end }}
 {{- with .Values.podSecurityContext }}

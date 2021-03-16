@@ -9,6 +9,9 @@ image:
   pullPolicy: IfNotPresent
   tag: 2.3.0
 
+# 5=tty 20=dailout 24=cdrom
+supplementalGroups: 5,20,24
+
 probes:
   liveness:
     enabled: true

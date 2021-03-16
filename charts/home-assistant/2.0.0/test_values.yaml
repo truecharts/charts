@@ -10,6 +10,9 @@ strategy:
 
 startAsRoot: true
 
+# 5=tty 20=dailout 24=cdrom
+supplementalGroups: 5,20,24
+
 env: {}
     # TZ:
 
