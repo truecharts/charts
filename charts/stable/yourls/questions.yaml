@@ -9,60 +9,79 @@ questions:
 # Include{replicas1}
 # Include{podSpec}
 # Include{containerMain}
-                                - variable: env
-                                  label: Image Environment
-                                  schema:
-                                    additional_attrs: true
-                                    type: dict
-                                    attrs:
-                                      - variable: YOURLS_DB_HOST
-                                        label: "YOURLS_DB_HOST"
-                                        description: "Container Variable YOURLSDBHOST"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_DB_PASS
-                                        label: "YOURLS_DB_PASS"
-                                        description: "Container Variable YOURLSDBPASS"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_SITE
-                                        label: "YOURLS_SITE"
-                                        description: "Use a reverse proxy to point to the container host"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_DB_NAME
-                                        label: "YOURLS_DB_NAME"
-                                        description: "yourls database name. default is yourls"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_HOURS_OFFSET
-                                        label: "YOURLS_HOURS_OFFSET"
-                                        description: "set your timezone ( GMT )"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_PRIVATE
-                                        label: "YOURLS_PRIVATE"
-                                        description: "false will set yourls to public. Reccomended value is true ( to be private )"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_USER
-                                        label: "YOURLS_USER"
-                                        description: "Yourls admin interface username"
-                                        schema:
-                                          type: string
-                                          default: ""
-                                      - variable: YOURLS_PASS
-                                        label: "YOURLS_PASS"
-                                        description: "Yourls admin interface password"
-                                        schema:
-                                          type: string
-                                          default: ""
+
+# Include{containerBasic}
+# Include{containerAdvanced}
+
+  - variable: yourls
+    group: App Configuration
+    label: Yourls
+    schema:
+      additional_attrs: true
+      type: dict
+      attrs:
+        - variable: site
+          label: Short Url
+          description: Your (hopefully short) domain URL, no trailing slash, lowercase.
+          schema:
+            type: string
+            default: ""
+        - variable: unique_urls
+          label: Unique Urls
+          description: Disable multiple short URLs for a same long URL.
+          schema:
+            type: boolean
+            default: true
+        - variable: private
+          label: Enable Auth
+          description: Protect the admin dash with login/pass.
+          schema:
+            type: boolean
+            default: true
+        - variable: auth
+          label: Auth Credentials
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+              - variable: user
+                label: Auth User
+                schema:
+                  type: string
+                  default: ""
+              - variable: pass
+                label: Auth Password
+                schema:
+                  type: string
+                  private: true
+                  default: ""
+        - variable: url_convert
+          label: Url Convert
+          description: How short URLs will be generated.
+          schema:
+            type: int
+            default: 36
+        - variable: private_infos
+          label: Private Infos
+          description: If private is set to true, you can still make stat pages public. 
+          schema:
+            type: boolean
+            default: false
+        - variable: private_api
+          label: Private API
+          description: If private is set to true, you can still make your API public.
+          schema:
+            type: boolean
+            default: false
+        - variable: no_stats
+          label: No Stats
+          description: Enable so redirects won't be logged and there will be not stat available.
+          schema:
+            type: boolean
+            default: true
+
+# Include{containerConfig}
+
 # Include{serviceRoot}
         - variable: main
           label: "Main Service"
@@ -84,7 +103,7 @@ questions:
                             description: "This port exposes the container port on the service"
                             schema:
                               type: int
-                              default: 80
+                              default: 8080
                               required: true
 # Include{serviceExpertRoot}
 # Include{serviceExpert}

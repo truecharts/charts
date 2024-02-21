@@ -7,12 +7,19 @@ annotations:
   truecharts.org/min_helm_version: "3.12"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: latest
+appVersion: 1.9.2
 dependencies:
   - name: common
     version: 17.4.2
     repository: oci://tccr.io/truecharts
     condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+  - name: mariadb
+    version: 12.1.12
+    repository: https://deps.truecharts.org/
+    condition: mariadb.enabled
     alias: ""
     tags: []
     import-values: []
@@ -36,4 +43,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/yourls
   - https://hub.docker.com/_/yourls
 type: application
-version: 4.2.1
+version: 4.2.2

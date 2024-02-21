@@ -1,34 +1,72 @@
 image:
   pullPolicy: IfNotPresent
   repository: yourls
-  tag: latest@sha256:1efd7b8df6e6a4ca9e1ca74f163dad512c093d6c9a298a00f8fb5354279a4c60
-persistence: {}
-portal:
-  open:
-    enabled: true
+  tag: 1.9.2@sha256:209524a74d37c5f82753cb771402cbb23b275fa7a2bcdb47da8ef5da3b163821
+
 securityContext:
   container:
     readOnlyRootFilesystem: false
     runAsGroup: 0
     runAsUser: 0
+
 service:
   main:
     ports:
       main:
-        port: 80
-        protocol: tcp
+        protocol: http
         targetPort: 80
+        port: 8080
+
+yourls:
+  site: "http://localhost:8080"
+  unique_urls: true
+  private: false
+  auth:
+    user: ""
+    pass: ""
+  url_convert: 36
+  private_infos: false
+  private_api: false
+  no_stats: true
+
 workload:
   main:
     podSpec:
       containers:
         main:
           env:
-            YOURLS_DB_HOST: ""
-            YOURLS_DB_NAME: ""
-            YOURLS_DB_PASS: ""
-            YOURLS_HOURS_OFFSET: ""
-            YOURLS_PASS: ""
-            YOURLS_PRIVATE: ""
-            YOURLS_SITE: ""
-            YOURLS_USER: ""
+            # YOURLS_DB_PREFIX: yourls_
+            YOURLS_DB_NAME: "{{ .Values.mariadb.mariadbDatabase }}"
+            YOURLS_DB_USER: "{{ .Values.mariadb.mariadbUsername }}"
+            YOURLS_DB_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: plainhost
+            YOURLS_DB_PASS:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: mariadb-password
+            YOURLS_COOKIEKEY: 
+              secretKeyRef:
+                name: yourls-secrets
+                key: YOURLS_COOKIEKEY
+            YOURLS_SITE: "{{ .Values.yourls.site }}"
+            YOURLS_PRIVATE: "{{ .Values.yourls.private }}"
+            YOURLS_USER: "{{ .Values.yourls.auth.user }}"
+            YOURLS_PASS: "{{ .Values.yourls.auth.pass }}"
+            YOURLS_UNIQUE_URLS: "{{ .Values.yourls.auth.pass }}"
+            YOURLS_URL_CONVERT: "{{ .Values.yourls.auth.pass }}"
+            YOURLS_PRIVATE_INFOS: "{{ .Values.yourls.auth.pass }}"
+            YOURLS_PRIVATE_API: "{{ .Values.yourls.auth.pass }}"
+            YOURLS_NOSTATS: "{{ .Values.yourls.no_stats }}"
+
+mariadb:
+  enabled: true
+  mariadbUsername: yourls
+  mariadbDatabase: yourls
+
+portal:
+  open:
+    enabled: true
