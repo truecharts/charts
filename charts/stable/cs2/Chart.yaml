@@ -17,7 +17,8 @@ dependencies:
     tags: []
     import-values: []
 deprecated: false
-description: A custom SteamCMD chart that runs CS2.
+description: |
+  A custom SteamCMD chart that runs CS2.
 home: https://truecharts.org/charts/stable/cs2
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/cs2.png
 keywords:
@@ -34,4 +35,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/cs2
   - https://hub.docker.com/r/ich777/steamcmd
 type: application
-version: 3.1.3
+version: 3.1.4

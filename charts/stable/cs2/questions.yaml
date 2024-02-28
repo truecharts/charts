@@ -86,6 +86,19 @@ questions:
                               type: int
                               default: 27015
                               required: true
+                    - variable: rcon
+                      label: "RCON Service Port Configuration"
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: "Port"
+                            description: "This port exposes RCON"
+                            schema:
+                              type: int
+                              default: 27020
+                              required: true
 # Include{serviceExpertRoot}
 # Include{serviceExpert}
 # Include{serviceList}

@@ -15,7 +15,11 @@ service:
       main:
         protocol: udp
         port: 27015
-
+  rcon:
+    ports:
+      rcon:
+        protocol: tcp
+        port: 27020
 cs2:
   game:
     id: 730
