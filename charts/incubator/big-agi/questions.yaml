@@ -1,0 +1,363 @@
+# Include{groups}
+portals:
+  open:
+# Include{portalLink}
+questions:
+# Include{global}
+# Include{workload}
+# Include{workloadDeployment}
+# Include{replicas1}
+# Include{podSpec}
+# Include{containerMain}
+# Include{containerBasic}
+# Include{containerAdvanced}
+  - variable: bigagi
+    group: App Configuration
+    label: Big-AGI
+    schema:
+      additional_attrs: true
+      type: dict
+      attrs:
+        - variable: llms
+          label: LLMS Configuration
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+              - variable: local_ai
+                label: Local AI
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_host
+                      label: API Host
+                      schema:
+                        type: string
+                        default: ""
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: ollama
+                label: Ollama
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_host
+                      label: API Host
+                      schema:
+                        type: string
+                        default: ""
+              - variable: open_ai
+                label: Open AI
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_host
+                      label: API Host
+                      schema:
+                        type: string
+                        default: ""
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+                    - variable: api_org_id
+                      label: API Org ID
+                      schema:
+                        type: string
+                        default: ""
+              - variable: azure
+                label: Azure
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_host
+                      label: API Host
+                      schema:
+                        type: string
+                        default: ""
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: anthropic
+                label: Anthropic
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_host
+                      label: API Host
+                      schema:
+                        type: string
+                        default: ""
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: gemini
+                label: Gemini
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_host
+                      label: API Host
+                      schema:
+                        type: string
+                        default: ""
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: mistral
+                label: Mistral
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: openrouter
+                label: OpenRouter
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: perplexity
+                label: Perplexity
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: together_ai
+                label: Together AI
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: helicone
+                label: Helicone
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: mistral
+                label: Azure
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+              - variable: mistral
+                label: Azure
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: api_key
+                      label: API Key
+                      schema:
+                        type: string
+                        private: true
+                        default: ""
+        - variable: features
+          label: Features Configuration
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+              - variable: text_to_speech
+                label: Text To Speech
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: elevenlabs
+                      label: ElevenLabs
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                          - variable: api_host
+                            label: API Host
+                            schema:
+                              type: string
+                              default: ""
+                          - variable: api_key
+                            label: API Key
+                            schema:
+                              type: string
+                              private: true
+                              default: ""
+                          - variable: voice_id
+                            label: Voice Id
+                            schema:
+                              type: string
+                              default: ""
+              - variable: text_to_image
+                label: Text To Image
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: prodia
+                      label: Prodia
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                          - variable: api_key
+                            label: API Key
+                            schema:
+                              type: string
+                              private: true
+                              default: ""
+              - variable: custom_search
+                label: Custom Search
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: google
+                      label: Google
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                          - variable: api_key
+                            label: API Key
+                            schema:
+                              type: string
+                              private: true
+                              default: ""
+                          - variable: cse_id
+                            label: CSE ID
+                            schema:
+                              type: string
+                              default: ""
+              - variable: browser
+                label: Browser Configuration
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: enabled
+                      label: Enabled
+                      schema:
+                        type: boolean
+                        default: false
+                    - variable: max_concurrent_sessions
+                      label: Max Concurrent Sessions
+                      schema:
+                        type: int
+                        default: 10
+
+# Include{containerConfig}
+# Include{podOptions}
+# Include{serviceRoot}
+# Include{serviceMain}
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: main
+                      label: "Main Service Port Configuration"
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: "Port"
+                            description: "This port exposes the container port on the service"
+                            schema:
+                              type: int
+                              default: 10691
+                              required: true
+# Include{serviceExpertRoot}
+# Include{serviceExpert}
+# Include{serviceList}
+# Include{persistenceList}
+# Include{ingressRoot}
+        - variable: main
+          label: "Main Ingress"
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{ingressDefault}
+# Include{ingressAdvanced}
+# Include{ingressList}
+# Include{securityContextRoot}
+              - variable: runAsUser
+                label: "runAsUser"
+                description: "The UserID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+              - variable: runAsGroup
+                label: "runAsGroup"
+                description: "The groupID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+# Include{securityContextContainer}
+# Include{securityContextAdvanced}
+# Include{securityContextPod}
+              - variable: fsGroup
+                label: "fsGroup"
+                description: "The group that should own ALL storage."
+                schema:
+                  type: int
+                  default: 568
+# Include{resources}
+# Include{postgresql}
+# Include{advanced}
+# Include{addons}
+# Include{codeserver}
+# Include{netshoot}
+# Include{vpn}
+# Include{documentation}

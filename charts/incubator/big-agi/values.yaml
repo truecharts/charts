@@ -1,0 +1,190 @@
+image:
+  repository: ghcr.io/enricoros/big-agi
+  pullPolicy: IfNotPresent
+  tag: 1.13.1@sha256:3d0322a786221ab0ba9d3c47ca1704e8555f7a30fa0e58908216067c1ae58ef3
+browserImage:
+  repository: browserless/chrome
+  pullPolicy: IfNotPresent
+  tag: 1.61.1-puppeteer-21.4.1@sha256:b6acad3ef2e1e0e3c2eb018add533570db2b34f5304682bad58c803b23ef7bd2
+
+# run as rootless first
+securityContext:
+  container:
+    readOnlyRootFilesystem: true
+    runAsUser: 568
+    runAsGroup: 568
+
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        port: 10691
+  browser:
+    enabled: true
+    type: ClusterIP
+    targetSelector: exportarr
+    ports:
+      browser:
+        enabled: true
+        port: 3000
+        targetSelector: exportarr
+bigagi:
+  llms:
+    local_ai:
+      api_key: ""
+      api_host: ""
+    ollama:
+      api_key: ""
+      api_host: ""
+    open_ai:
+      api_key: ""
+      api_host: ""
+      api_org_id: ""
+    azure:
+      api_key: ""
+      api_host: ""
+    anthropic:
+      api_key: ""
+      api_host: ""
+    gemini:
+      api_key: ""
+      api_host: ""
+    mistral:
+      api_key: ""
+    openrouter:
+      api_key: ""
+    perplexity:
+      api_key: ""
+    together_ai:
+      api_key: ""
+    helicone:
+      api_key: ""
+  features:
+    text_to_speech:
+      elevenlabs:
+        api_key: ""
+        api_host: ""
+        voice_id: ""
+    text_to_image:
+      prodia:
+        api_key: ""
+    custom_search:
+      google:
+        api_key: ""
+        cse_id: ""
+    browser:
+      enabled: false
+      max_concurrent_sessions: 10
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            PUPPETEER_WSS_ENDPOINT: '{{ printf "ws://%v-browser:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.browser.ports.browser.port }}'
+            # Database (Postgres)
+            POSTGRES_PRISMA_URL:
+              secretKeyRef:
+                name: cnpg-main-urls
+                key: std
+            # POSTGRES_URL_NON_POOLING: ""
+
+            # LLMs
+            # local AI
+            LOCALAI_API_HOST: "{{ .Values.bigagi.llms.local_ai.api_host }}"
+            LOCALAI_API_KEY: "{{ .Values.bigagi.llms.local_ai.api_key }}"
+            # Ollama
+            # doesnt have an API key to set
+            OLLAMA_API_HOST: "{{ .Values.bigagi.llms.ollama.api_host }}"
+            # Open AI
+            OPENAI_API_HOST: "{{ .Values.bigagi.llms.open_ai.api_host }}"
+            OPENAI_API_ORG_ID: "{{ .Values.bigagi.llms.open_ai.api_org_id }}"
+            OPENAI_API_KEY: "{{ .Values.bigagi.llms.open_ai.api_key }}"
+            # Azure
+            AZURE_OPENAI_API_ENDPOINT: "{{ .Values.bigagi.llms.azure.api_host }}"
+            AZURE_OPENAI_API_KEY: "{{ .Values.bigagi.llms.azure.api_key }}"
+            # Anthropic
+            ANTHROPIC_API_HOST: "{{ .Values.bigagi.llms.anthropic.api_host }}"
+            ANTHROPIC_API_KEY: "{{ .Values.bigagi.llms.anthropic.api_key }}"
+            # Gemini
+            GEMINI_API_KEY: "{{ .Values.bigagi.llms.gemini.api_key }}"
+            # Mistral
+            MISTRAL_API_KEY: "{{ .Values.bigagi.llms.mistral.api_key }}"
+            # OpenRouter
+            OPENROUTER_API_KEY: "{{ .Values.bigagi.llms.openrouter.api_key }}"
+            # Perplexicity
+            PERPLEXITY_API_KEY: "{{ .Values.bigagi.llms.perplexity.api_key }}"
+            # TogetherAI
+            TOGETHERAI_API_KEY: "{{ .Values.bigagi.llms.together_ai.api_key }}"
+
+            # Model Observability: Helicone
+            HELICONE_API_KEY: "{{ .Values.bigagi.llms.helicone.api_host }}"
+
+            # Text-To-Speech
+            ELEVENLABS_API_KEY: "{{ .Values.bigagi.features.text_to_speech.elevenlabs.api_key }}"
+            ELEVENLABS_API_HOST: "{{ .Values.bigagi.features.text_to_speech.elevenlabs.api_host }}"
+            ELEVENLABS_VOICE_ID: "{{ .Values.bigagi.features.text_to_speech.elevenlabs.voice_id }}"
+            # Text-To-Image
+            PRODIA_API_KEY: "{{ .Values.bigagi.features.text_to_image.prodia.api_key }}"
+            # Google Custom Search
+            GOOGLE_CLOUD_API_KEY: "{{ .Values.bigagi.features.custom_search.google.api_key }}"
+            GOOGLE_CSE_ID: "{{ .Values.bigagi.features.custom_search.google.cse_id }}"
+            
+            # Backend Analytics
+            # BACKEND_ANALYTICS=
+
+            # Backend HTTP Basic Authentication (see `deploy-authentication.md` for turning on authentication)
+            # ingress + forwardAuth; lets not set these.
+            # HTTP_BASIC_AUTH_USERNAME=
+            # HTTP_BASIC_AUTH_PASSWORD=
+
+            # Frontend variables
+            # NEXT_PUBLIC_GA4_MEASUREMENT_ID=
+            # NEXT_PUBLIC_PLANTUML_SERVER_URL=
+  
+            # Database (MongoDB)
+            # not using it; just documenting it here.
+            # MDB_URI=
+
+  browser:
+    enabled: true
+    type: Deployment
+    strategy: RollingUpdate
+    replicas: 1
+    podSpec:
+      containers:
+        browser:
+          primary: true
+          enabled: true
+          imageSelector: browserImage
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              path: /healthz
+              port: "{{ .Values.service.browser.ports.browser.port }}"
+            readiness:
+              enabled: true
+              type: http
+              path: /
+              port: "{{ .Values.service.browser.ports.browser.port }}"
+            startup:
+              enabled: true
+              type: http
+              path: /
+              port: "{{ .Values.service.browser.ports.browser.port }}"
+          env:
+            MAX_CONCURRENT_SESSIONS: "{{ .Values.bigagi.llms.features.browser.max_concurrent_sessions }}"
+
+# Enabled postgres
+cnpg:
+  main:
+    enabled: true
+    user: bigagi
+    database: bigagi
+
+portal:
+  open:
+    enabled: true
