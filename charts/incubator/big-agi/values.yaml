@@ -172,8 +172,7 @@ workload:
               port: "{{ .Values.service.browser.ports.browser.port }}"
             startup:
               enabled: true
-              type: http
-              path: /
+              type: tcp
               port: "{{ .Values.service.browser.ports.browser.port }}"
           env:
             MAX_CONCURRENT_SESSIONS: "{{ .Values.bigagi.llms.features.browser.max_concurrent_sessions }}"
