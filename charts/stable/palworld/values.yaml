@@ -2,10 +2,10 @@ image:
   repository: ghcr.io/ich777/steamcmd
   pullPolicy: IfNotPresent
   tag: palworld@sha256:19feeefa79edf310ebbe8002a76b254bea9d4e0d3968563bbd616e02087c9111
-rconImage:
-  repository: outdead/rcon
+adminImage:
+  repository: jokerwho/palworld-server-tool
   pullPolicy: IfNotPresent
-  tag: latest@sha256:f4ab6d4f86525e2d71534b839cc4e2241ffc9278759f7a70ef3aa434c5aec927
+  tag: 0.6.1@sha256:537cfbd4e066ae69758a43b04d8b72b8ba30f15eb79fc2bf847878c0bd2f4991
 
 securityContext:
   container:
@@ -26,6 +26,12 @@ service:
         enabled: true
         protocol: tcp
         port: 25575
+  admin:
+    enabled: true
+    ports:
+      web:
+        enabled: true
+        port: 8210
 
 palworld:
   steam:
@@ -38,7 +44,7 @@ palworld:
     description: "A Palworld Server running in Kubernetes"
     use_auth: true
     password: ""
-    admin_password: ""
+    admin_password: "admin123"
     auto_reset_guild_time_no_online_players: "72.000000"
     ban_list_url: "https://api.palworldgame.com/api/banlist.txt"
     base_camp_max: 128
@@ -104,9 +110,20 @@ palworld:
     enabled: true
     interval: 120
     to_keep: 12
-  rcon:
+  admin:
     enabled: true
-    timeout: 10s
+    password: "admin123"
+    rcon:
+      timeout: 60
+      sync_interval: 60
+    save:
+      sync_interval: 600
+      backup_interval: 14400
+    kick_non_whitelist: false
+
+ingress:
+  admin:
+    autoLink: true
 
 workload:
   main:
@@ -308,26 +325,45 @@ workload:
             BACKUP: "{{ .Values.palworld.backup.enabled }}"
             BACKUP_INTERVAL: "{{ .Values.palworld.backup.interval }}"
             BACKUP_TO_KEEP: "{{ .Values.palworld.backup.to_keep }}"
-  rcon:
+  admin:
     enabled: true
     type: Deployment
     strategy: RollingUpdate
     replicas: 1
     podSpec:
       containers:
-        rcon:
+        admin:
           primary: true
           enabled: true
-          imageSelector: rconImage
+          imageSelector: adminImage
           tty: true
           stdin: true
           probes:
             liveness:
-              enabled: false
+              enabled: true
+              type: http
+              path: /
+              port: "{{ .Values.service.admin.ports.web.port }}"
             readiness:
-              enabled: false
+              enabled: true
+              type: http
+              path: /
+              port: "{{ .Values.service.admin.ports.web.port }}"
             startup:
-              enabled: false
+              enabled: true
+              type: tcp
+              port: "{{ .Values.service.admin.ports.web.port }}"
+          env:
+            WEB__PORT: "{{ .Values.service.admin.ports.web.port }}"
+            WEB__PASSWORD: "{{ .Values.palworld.admin.password }}"
+            RCON__ADDRESS: '{{ printf "%v-rcon:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.rcon.ports.rcon.port }}'
+            RCON__PASSWORD: "{{ .Values.palworld.game.admin_password }}"
+            RCON__TIMEOUT: "{{ .Values.palworld.admin.rcon.timeout }}"
+            RCON__SYNC_INTERVAL: "{{ .Values.palworld.admin.rcon.sync_interval }}"
+            SAVE__PATH: "{{ .Values.persistence.serverfiles.targetSelector.admin.admin.mountPath }}/Pal/Saved"
+            SAVE__SYNC_INTERVAL: "{{ .Values.palworld.admin.save.sync_interval }}"
+            SAVE__BACKUP_INTERVAL: "{{ .Values.palworld.admin.save.backup_interval }}"
+            MANAGE__KICK_NON_WHITELIST: "{{ .Values.palworld.admin.kick_non_whitelist }}"
 
 persistence:
   steamcmd:
@@ -341,17 +377,10 @@ persistence:
           mountPath: /serverdata/serverfiles
         update-config-ini:
           mountPath: /serverdata/serverfiles
-  palworld-rcon:
-    enabled: true
-    type: configmap
-    objectName: palworld-rcon
-    targetSelector:
-      rcon:
-        rcon:
-          mountPath: /rcon.yaml
-          subPath: rcon.yaml
-          readOnly: true
+      admin:
+        admin:
+          mountPath: /serverdata/serverfiles
 
 portal:
   open:
-    enabled: false
+    enabled: true

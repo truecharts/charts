@@ -1,5 +1,12 @@
 # Include{groups}
-portals: {}
+portals:
+  admin:
+    protocols:
+      - "$kubernetes-resource_configmap_portal_protocol"
+    host:
+      - "$kubernetes-resource_configmap_portal_host"
+    ports:
+      - "$variable-service.admin.ports.web.port"
 questions:
 # Include{global}
 # Include{workload}
@@ -452,25 +459,67 @@ questions:
                   type: int
                   default: 12
                   min: 1
-        - variable: rcon
-          label: RCON Sidecar Configuration
+        - variable: admin
+          label: Server Tools Configuration
           schema:
             additional_attrs: true
             type: dict
             attrs:
               - variable: enabled
-                label: Enable the RCON sidecar.
+                label: Enable the Server Tools SideCar.
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
-                    - variable: timeout
-                      label: Rcon TimeOut
+                    - variable: password
+                      label: Web Admin Password
                       schema:
                         type: string
-                        required: true
-                        default: 10s
+                        private: true
+                        default: ""
+                    - variable: rcon
+                      label: RCON Configuration
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: timeout
+                            label: Rcon TimeOut
+                            description:  Timeout for individual RCON service requests.
+                            schema:
+                              type: int
+                              default: 30
+                          - variable: sync_interval
+                            label: Sync Interval
+                            description: Interval for requesting RCON server to sync player online data.
+                            schema:
+                              type: int
+                              default: 60
+                    - variable: save
+                      label: Save Configuration
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: sync_interval
+                            label: Sync Interval
+                            description: Interval for syncing player save data.
+                            schema:
+                              type: int
+                              default: 600
+                          - variable: backup_interval
+                            label: Backup Interval
+                            description: Interval for auto backup player save data.
+                            schema:
+                              type: int
+                              default: 14400
+                    - variable: kick_non_whitelist
+                      label: Kick Non Whitelist
+                      description: Automatically kicked out when it detects that a player is not whitelisted but is online.
+                      schema:
+                        type: boolean
+                        default: false
 
 # Include{containerConfig}
 # Include{serviceRoot}
@@ -518,6 +567,28 @@ questions:
                               type: int
                               default: 25575
                               required: true
+        - variable: admin
+          label: Admin service
+          description: Admin Service Port Configuration
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: web
+                      label: Web Service Port Configuration
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: Port
+                            description: This port exposes the container port on the service
+                            schema:
+                              type: int
+                              default: 8210
+                              required: true
 # Include{serviceExpertRoot}
 # Include{serviceExpert}
 # Include{serviceList}
@@ -539,6 +610,16 @@ questions:
             attrs:
 # Include{persistenceBasic}
 # Include{persistenceList}
+# Include{ingressRoot}
+        - variable: admin
+          label: Admin Ingress
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{ingressDefault}
+# Include{ingressAdvanced}
+# Include{ingressList}
 # Include{securityContextRoot}
               - variable: runAsUser
                 label: "runAsUser"

@@ -1,15 +1,10 @@
 {{/* Make sure all variables are set properly */}}
 {{- include "tc.v1.common.loader.init" . -}}
 
-{{/* Render configmaps for all pods */}}
-{{- $configmaps := include "palworld.configmaps" . | fromYaml -}}
-{{- if $configmaps -}}
-  {{- $_ := mustMergeOverwrite .Values.configmap $configmaps -}}
-{{- end -}}
-
-{{/* Disable [rcon] if requested */}}
-{{- if not .Values.palworld.rcon.enabled -}}
-  {{- $_ := set .Values.workload.rcon "enabled" false -}}
+{{/* Disable [admin] if requested */}}
+{{- if not .Values.palworld.admin.enabled -}}
+  {{- $_ := set .Values.workload.admin "enabled" false -}}
+    {{- $_ := set .Values.service.admin "enabled" false -}}
 {{- end -}}
 
 

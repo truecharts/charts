@@ -33,6 +33,7 @@ sources:
   - https://github.com/ich777/docker-steamcmd-server/tree/palworld
   - https://github.com/truecharts/charts/tree/master/charts/stable/palworld
   - https://ghcr.io/ich777/steamcmd
-  - https://hub.docker.com/r/outdead/rcon
+  - https://github.com/zaigie/palworld-server-tool
+  - https://hub.docker.com/r/jokerwho/palworld-server-tool
 type: application
-version: 2.4.1
+version: 2.5.0

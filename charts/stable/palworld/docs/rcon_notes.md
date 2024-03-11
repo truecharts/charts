@@ -2,33 +2,6 @@
 title: PalWorld RCON Notes
 ---
 
-Shell into the app from the web gui or use heavyscript and select the RCON container; the following commands can be used.
-
-A single command:
-
-```shell
-./rcon info
-```
-
-A interactive shell:
-
-```shell
-./rcon
-```
-
-:::note
-
-To use the same commands while in game;
-type in chat:
-
-/AdminPassword PASSWORD
-
-then run the commands in chat
-
-ex: /Info
-
-:::
-
 ## RCON Commands
 
 | Command                            | Description                                                                                            |
