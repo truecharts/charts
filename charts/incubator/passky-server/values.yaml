@@ -1,0 +1,101 @@
+image:
+  repository: rabbitcompany/passky-server
+  pullPolicy: IfNotPresent
+  tag: 8.1.6@sha256:ef803c3ffbabde6b79b996f5b33fcab0515f6439ccc961129d5da044c5518979
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 18080
+        targetPort: 80
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            SERVER_LOCATION: "US"
+            SERVER_CORES: 1
+            ADMIN_USERNAME: "admin"
+            ADMIN_PASSWORD: ""
+            CF_TURNSTILE_SITE_KEY: "1x00000000000000000000AA"
+            CF_TURNSTILE_SECRET_KEY: "1x0000000000000000000000000000000AA"
+            DATABASE_ENGINE: mysql
+            MYSQL_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: plainhost
+            MYSQL_PORT: 3306
+            MYSQL_DATABASE: "{{ .Values.mariadb.mariadbDatabase }}"
+            MYSQL_USER: "{{ .Values.mariadb.mariadbUsername }}"
+            MYSQL_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: mariadb-password
+            MYSQL_CACHE_MODE: 0
+            REDIS_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: plainhost
+            REDIS_PORT: 6379
+            REDIS_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: redis-password
+            REDIS_LOCAL_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: plainhost
+            REDIS_LOCAL_PORT: 6379
+            REDIS_LOCAL_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: redis-password
+            MAIL_ENABLED: "false"
+            ACCOUNT_MAX: 100
+            ACCOUNT_MAX_PASSWORDS: 1000
+            ACCOUNT_PREMIUM: -1
+            YUBI_CLOUD: "https://api.yubico.com/wsapi/2.0/verify"
+            YUBI_ID: 67857
+            LIMITER_ENABLED: "true"
+            LIMITER_GET_INFO: -1
+            LIMITER_GET_STATS: -1
+            LIMITER_GET_TOKEN: 3
+            LIMITER_GET_PASSWORDS: 2
+            LIMITER_SAVE_PASSWORD: 2
+            LIMITER_EDIT_PASSWORD: 2
+            LIMITER_DELETE_PASSWORD: 2
+            LIMITER_DELETE_PASSWORDS: 10
+            LIMITER_CREATE_ACCOUNT: 10
+            LIMITER_DELETE_ACCOUNT: 10
+            LIMITER_IMPORT_PASSWORDS: 10
+            LIMITER_FORGOT_USERNAME: 60
+            LIMITER_ENABLE_2FA: 10
+            LIMITER_DISABLE_2FA: 10
+            LIMITER_ADD_YUBIKEY: 10
+            LIMITER_REMOVE_YUBIKEY: 10
+            LIMITER_UPGRADE_ACCOUNT: 10
+            LIMITER_GET_REPORT: -1
+
+mariadb:
+  enabled: true
+  mariadbUsername: passky
+  mariadbDatabase: passky
+
+redis:
+  enabled: true
+
+portal:
+  open:
+    enabled: true

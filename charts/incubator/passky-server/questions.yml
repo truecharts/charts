@@ -1,0 +1,318 @@
+# Include{groups}
+portals:
+  open:
+# Include{portalLink}
+questions:
+# Include{global}
+# Include{workload}
+# Include{workloadDeployment}
+# Include{replicas1}
+# Include{podSpec}
+# Include{containerMain}
+                                - variable: env
+                                  label: Image Environment
+                                  schema:
+                                    additional_attrs: true
+                                    type: dict
+                                    attrs:
+                                      - variable: SERVER_SETTINGS
+                                        label: Show Server Settings
+                                        schema:
+                                          type: boolean
+                                          default: true
+                                          show_subquestions_if: true
+                                          subquestions:
+                                            - variable: SERVER_LOCATION
+                                              label: Server Location
+                                              description: "Only 'ISO 3166-1 alpha-2' codes are accepted. (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)"
+                                              schema:
+                                                type: string
+                                                default: "US"
+                                            - variable: SERVER_CORES
+                                              label: Server Threads
+                                              description: Number of server cores / threads.
+                                              schema:
+                                                type: int
+                                                default: 1
+                                      - variable: ADMIN_SETTINGS
+                                        label: Show Admin Settings
+                                        schema:
+                                          type: boolean
+                                          default: true
+                                          show_subquestions_if: true
+                                          subquestions:
+                                            - variable: ADMIN_USERNAME
+                                              label: Admin Username
+                                              description: Username for Admin Panel
+                                              schema:
+                                                type: string
+                                                default: "admin"
+                                            - variable: ADMIN_PASSWORD
+                                              label: Admin Password
+                                              description: Password for Admin Panel
+                                              schema:
+                                                type: string
+                                                private: true
+                                                default: ""
+                                      - variable: ACCOUNT_SETTINGS
+                                        label: Show Account Settings
+                                        schema:
+                                          type: boolean
+                                          default: true
+                                          show_subquestions_if: true
+                                          subquestions:
+                                            - variable: ACCOUNT_MAX
+                                              label: Account Limit
+                                              description: Maximum number of accounts (use -1 for unlimited).
+                                              schema:
+                                                type: int
+                                                default: 100
+                                            - variable: ACCOUNT_MAX_PASSWORDS
+                                              label: Password Limit
+                                              description: Maximum number of passwords stored per account (use -1 for unlimited).
+                                              schema:
+                                                type: int
+                                                default: 1000
+                                            - variable: ACCOUNT_PREMIUM
+                                              label: Premium Password Limit
+                                              description: Maximum number of passwords stored per premium account (use -1 for unlimited).
+                                              schema:
+                                                type: int
+                                                default: -1
+                                      - variable: CAPTCHA_SETTINGS
+                                        label: Show Captcha Settings
+                                        schema:
+                                          type: boolean
+                                          default: true
+                                          show_subquestions_if: true
+                                          subquestions:
+                                            - variable: CF_TURNSTILE_SITE_KEY
+                                              label: Cloudflare Turnstile Site Key
+                                              schema:
+                                                type: string
+                                                default: "1x00000000000000000000AA"
+                                            - variable: CF_TURNSTILE_SECRET_KEY
+                                              label: Cloudflare Turnstile Secret Key
+                                              schema:
+                                                type: string
+                                                private: true
+                                                default: "1x0000000000000000000000000000000AA"
+                                      - variable: MAIL_ENABLED
+                                        label: Show Optional Mail Settings
+                                        schema:
+                                          type: boolean
+                                          default: false
+                                          show_subquestions_if: true
+                                          subquestions:
+                                            - variable: MAIL_HOST
+                                              label: Mail Server
+                                              description: The mail server that emails are sent from.
+                                              schema:
+                                                type: string
+                                                default: ""
+                                            - variable: MAIL_PORT
+                                              label: Mail Port
+                                              description: The mail port that emails are sent from.
+                                              schema:
+                                                type: int
+                                                default: 587
+                                            - variable: MAIL_USERNAME
+                                              label: Mail UserName
+                                              description: The username used to authenticate to the SMTP server.
+                                              schema:
+                                                type: string
+                                                default: ""
+                                            - variable: MAIL_PASSWORD
+                                              label: Mail Password
+                                              description: The password used to authenticate to the SMTP server.
+                                              schema:
+                                                type: string
+                                                private: true
+                                                default: ""
+                                            - variable: MAIL_USE_TLS
+                                              label: Mail TLS
+                                              description: Whether to connect to the SMTP server over TLS.
+                                              schema:
+                                                type: boolean
+                                                default: true
+                                      - variable: LIMITER_ENABLED
+                                        label: Show Optional API Call Limiter Settings
+                                        schema:
+                                          type: boolean
+                                          default: true
+                                          show_subquestions_if: true
+                                          subquestions:
+                                            - variable: LIMITER_GET_INFO
+                                              label: Limiter Get Info
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: -1
+                                            - variable: LIMITER_GET_STATS
+                                              label: Limiter Get Stats
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: -1
+                                            - variable: LIMITER_GET_REPORT
+                                              label: Limiter Get Report
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: -1
+                                            - variable: LIMITER_GET_TOKEN
+                                              label: Limiter Get Token
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 3
+                                            - variable: LIMITER_GET_PASSWORDS
+                                              label: Limiter Get Passwords
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 2
+                                            - variable: LIMITER_SAVE_PASSWORD
+                                              label: Limiter Save Password
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 2
+                                            - variable: LIMITER_EDIT_PASSWORD
+                                              label: Limiter Edit Password
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 2
+                                            - variable: LIMITER_DELETE_PASSWORD
+                                              label: Limiter Delete Password
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 2
+                                            - variable: LIMITER_DELETE_PASSWORDS
+                                              label: Limiter Delete Passwords
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_CREATE_ACCOUNT
+                                              label: Limiter Create Account
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_DELETE_ACCOUNT
+                                              label: Limiter Delete Account
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_IMPORT_PASSWORDS
+                                              label: Limiter Import Passwords
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_FORGOT_USERNAME
+                                              label: Limiter Forgot Username
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 60
+                                            - variable: LIMITER_ENABLE_2FA
+                                              label: Limiter Enable 2FA
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_DISABLE_2FA
+                                              label: Limiter Disable 2FA
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_ADD_YUBIKEY
+                                              label: Limiter Add Yubikey
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_REMOVE_YUBIKEY
+                                              label: Limiter Remove Yubikey
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+                                            - variable: LIMITER_UPGRADE_ACCOUNT
+                                              label: Limiter Upgrade Account
+                                              description: Values in seconds (-1 for disabled).
+                                              schema:
+                                                type: int
+                                                default: 10
+# Include{containerBasic}
+# Include{containerAdvanced}
+# Include{containerConfig}
+# Include{podOptions}
+# Include{serviceRoot}
+# Include{serviceMain}
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: main
+                      label: "Main Service Port Configuration"
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: "Port"
+                            description: "This port exposes the container port on the service"
+                            schema:
+                              type: int
+                              default: 18080
+                              required: true
+# Include{serviceExpertRoot}
+# Include{serviceExpert}
+# Include{serviceList}
+# Include{persistenceRoot}
+# Include{persistenceBasic}
+# Include{persistenceList}
+# Include{ingressRoot}
+        - variable: main
+          label: "Main Ingress"
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{ingressDefault}
+# Include{ingressAdvanced}
+# Include{ingressList}
+# Include{securityContextRoot}
+              - variable: runAsUser
+                label: "runAsUser"
+                description: "The UserID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+              - variable: runAsGroup
+                label: "runAsGroup"
+                description: "The groupID this App of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+# Include{securityContextContainer}
+# Include{securityContextAdvanced}
+# Include{securityContextPod}
+              - variable: fsGroup
+                label: "fsGroup"
+                description: "The group that should own ALL storage."
+                schema:
+                  type: int
+                  default: 568
+# Include{resources}
+# Include{advanced}
+# Include{addons}
+# Include{codeserver}
+# Include{netshoot}
+# Include{vpn}
+# Include{documentation}
