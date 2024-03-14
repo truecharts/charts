@@ -1,0 +1,137 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: standardnotes/server
+  tag: latest@sha256:cbdc5e3e6d7212eeaec86898e6ba944b1678349262d3da7215a246d832471391
+localstackImage:
+  pullPolicy: IfNotPresent
+  repository: localstack/localstack
+  tag: 3.0.2@sha256:73698e485240939490134aadd7e429ac87ff068cd5ad09f5de8ccb76727c13e1
+persistence:
+  logs:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: /var/lib/server/logs
+  uploads:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: /opt/server/packages/files/dist/uploads
+  bootstrap:
+    enabled: true
+    targetSelector:
+      localstack:
+        localstack:
+          mountPath: /etc/localstack/init/ready.d
+        bootstrap-init:
+          mountPath: /etc/localstack/init/ready.d
+portal:
+  open:
+    enabled: false
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsUser: 0
+service:
+  main:
+    enabled: true
+    ports:
+      main:
+        enabled: true
+        port: 3000
+        targetPort: 3000
+      files:
+        enabled: true
+        port: 3125
+        targetPort: 3104
+  localstack:
+    enabled: true
+    targetSelector: localstack
+    ports:
+      app:
+        enabled: true
+        targetSelector: localstack
+        port: 4566
+        targetPort: 4566
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            DB_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: plainhost
+            DB_PORT: 3306
+            DB_USERNAME: '{{ .Values.mariadb.mariadbUsername }}'
+            DB_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: mariadb-password
+            DB_DATABASE: '{{ .Values.mariadb.mariadbDatabase }}'
+            DB_TYPE: mysql
+            REDIS_PORT: 6379
+            REDIS_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: plainhost
+            CACHE_TYPE: redis
+            AUTH_JWT_SECRET:
+              secretKeyRef:
+                name: standardnotes-secrets
+                key: AUTH_JWT_SECRET
+            AUTH_SERVER_ENCRYPTION_SERVER_KEY:
+              secretKeyRef:
+                name: standardnotes-secrets
+                key: AUTH_SERVER_ENCRYPTION_SERVER_KEY
+            VALET_TOKEN_SECRET:
+              secretKeyRef:
+                name: standardnotes-secrets
+                key: VALET_TOKEN_SECRET
+  localstack:
+    enabled: true
+    type: Deployment
+    podSpec:
+      initContainers:
+        bootstrap-init:
+          enabled: true
+          type: init
+          imageSelector: localstackImage
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              set -x
+              curl -L --output-dir "/etc/localstack/init/ready.d" --output "localstack_bootstrap.sh" \
+              https://raw.githubusercontent.com/standardnotes/server/main/docker/localstack_bootstrap.sh
+              chmod +x /etc/localstack/init/ready.d/localstack_bootstrap.sh
+      containers:
+        localstack:
+          enabled: true
+          primary: true
+          imageSelector: localstackImage
+          probes:
+            liveness:
+              enabled: false
+            readiness:
+              enabled: false
+            startup:
+              enabled: false
+          env:
+            SERVICES: "sns,sqs"
+            HOSTNAME_EXTERNAL: localstack
+            LS_LOG: warn
+mariadb:
+  enabled: true
+  mariadbUsername: standardnotes
+  mariadbDatabase: standardnotes
+redis:
+  enabled: true
+
