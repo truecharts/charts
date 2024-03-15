@@ -1,0 +1,71 @@
+image:
+  repository: inovector/mixpost
+  pullPolicy: IfNotPresent
+  tag: v1.4.0@sha256:f9c14360ad7af6e4b2f1bad518d2b2aa91646b0edb41fcb79bac2ee27fe9564c
+service:
+  main:
+    ports:
+      main:
+        targetPort: 80
+        port: 80
+persistence:
+  storage:
+    enabled: true
+    mountPath: "/var/www/html/storage/app"
+  logs:
+    enabled: true
+    mountPath: "/var/www/html/storage/logs"
+mariadb:
+  enabled: true
+  mariadbUsername: mixpost
+  mariadbDatabase: mixpost
+redis:
+  enabled: true
+  redisUsername: default
+securityContext:
+  container:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    runAsUser: 0
+    runAsGroup: 0
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              type: http
+              httpHeaders:
+                Host: localhost
+            startup:
+              type: http
+              httpHeaders:
+                Host: localhost
+            readiness:
+              type: http
+              httpHeaders:
+                Host: localhost
+          env:
+            DB_DATABASE: "{{ .Values.mariadb.mariadbDatabase }}"
+            DB_USERNAME: "{{ .Values.mariadb.mariadbUsername }}"
+            DB_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: plainhost
+            DB_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: mariadb-password
+            REDIS_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: plainhost
+            REDIS_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: redis-password

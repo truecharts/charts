@@ -1,0 +1,53 @@
+annotations:
+  max_scale_version: 24.04.0
+  min_scale_version: 23.10.0
+  truecharts.org/SCALE-support: "true"
+  truecharts.org/category: productivity
+  truecharts.org/max_helm_version: "3.14"
+  truecharts.org/min_helm_version: "3.11"
+  truecharts.org/train: incubator
+apiVersion: v2
+appVersion: 1.4.0
+dependencies:
+  - name: common
+    version: 18.1.5
+    repository: oci://tccr.io/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+  - name: redis
+    version: 12.2.0
+    repository: oci://tccr.io/truecharts
+    condition: redis.enabled
+    alias: ""
+    tags: []
+    import-values: []
+  - name: mariadb
+    version: 13.2.0
+    repository: oci://tccr.io/truecharts
+    condition: mariadb.enabled
+    alias: ""
+    tags: []
+    import-values: []
+deprecated: false
+description: Mixpost it's the coolest Self hosted social media management software.
+home: https://truecharts.org/charts/incubator/mixpost
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/mixpost.png
+keywords:
+  - mixpost
+  - twitter
+  - facebook
+  - socialmedia
+kubeVersion: ">=1.24.0-0"
+maintainers:
+  - name: TrueCharts
+    email: info@truecharts.org
+    url: https://truecharts.org
+name: mixpost
+sources:
+  - https://github.com/inovector/mixpost
+  - https://github.com/truecharts/charts/tree/master/charts/incubator/mixpost
+  - https://hub.docker.com/r/inovector/mixpost
+type: application
+version: 0.0.1
