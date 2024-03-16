@@ -1,0 +1,36 @@
+{{/* Make sure all variables are set properly */}}
+{{- include "tc.v1.common.loader.init" . }}
+
+{{- define "dendrite.configvolume" -}}
+enabled: true
+type: configmap
+objectName: dendrite-config
+defaultMode: "0755"
+mountPath: /etc/dendrite
+items:
+- key: dendrite.yaml
+  path: dendrite.yaml
+{{- end -}}
+
+{{- define "dendrite.confighostpath" -}}
+enabled: true
+type: hostPath
+readOnly: {{ .Values.dendrite.configFileHostReadOnly }}
+hostPathType: File
+hostPath: {{ .Values.dendrite.configFileHostPath }}
+mountPath: /etc/dendrite/dendrite.yaml
+{{- end -}}
+
+{{- if .Values.dendriteConfig -}}
+  {{/* Render config for dendrite */}}
+  {{- $config := include "dendrite.config" . | fromYaml -}}
+  {{- if $config -}}
+    {{- $_ := mustMergeOverwrite .Values $config -}}
+  {{- end -}}
+  {{- $_ := set .Values.persistence "dendrite-config" (include "dendrite.configvolume" . | fromYaml) -}}
+{{- else if .Values.dashy.enabled -}}
+  {{- $_ := set .Values.persistence "dendrite-config" (include "dendrite.confighostpath" . | fromYaml) -}}
+{{- end -}}
+
+{{/* Render the templates */}}
+{{ include "tc.v1.common.loader.apply" . }}

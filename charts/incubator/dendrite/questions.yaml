@@ -1,0 +1,112 @@
+# Include{groups}
+portals: {}
+questions:
+# Include{global}
+# Include{workload}
+# Include{workloadDeployment}
+# Include{replicas1}
+# Include{podSpec}
+# Include{containerMain}
+
+# Include{containerBasic}
+# Include{containerAdvanced}
+
+# Include{containerConfig}
+# Include{podOptions}
+# Include{serviceRoot}
+# Include{serviceMain}
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: main
+                      label: "Main Service Port Configuration"
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: "Port"
+                            description: "This port exposes the container port on the service"
+                            schema:
+                              type: int
+                              default: 8008
+                              required: true
+        - variable: service
+          label: Secondary Service Port
+          description: The secondary service.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: service
+                      label: Secondary Service Port Configuration
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: Port
+                            description: This port exposes the container port on the service
+                            schema:
+                              type: int
+                              default: 8448
+                              required: true
+# Include{serviceExpertRoot}
+# Include{serviceExpert}
+# Include{serviceList}
+# Include{persistenceRoot}
+        - variable: media
+          label: "App Media Storage"
+          description: "Stores the Application Meida."
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+        - variable: jetstream
+          label: "App Jetstream Files Storage"
+          description: "Stores the Application Jetstream Server Files."
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+        - variable: dendrite_search_index
+          label: "App Search Index Files Storage"
+          description: "Stores the Application Search Index Files."
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+# Include{persistenceList}
+# Include{securityContextRoot}
+              - variable: runAsUser
+                label: "runAsUser"
+                description: "The UserID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+              - variable: runAsGroup
+                label: "runAsGroup"
+                description: "The groupID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+# Include{securityContextContainer}
+# Include{securityContextAdvanced}
+# Include{securityContextPod}
+              - variable: fsGroup
+                label: "fsGroup"
+                description: "The group that should own ALL storage."
+                schema:
+                  type: int
+                  default: 568
+# Include{resources}
+# Include{advanced}
+# Include{addons}
+# Include{codeserver}
+# Include{netshoot}
+# Include{vpn}
+# Include{documentation}
