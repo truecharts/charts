@@ -1,0 +1,29 @@
+apiVersion: v2
+appVersion: "1.1.3.2982"
+dependencies:
+  - name: common
+    repository: https://library-charts.truecharts.org
+    version: 12.8.1
+deprecated: false
+description: WebDAV is a set of extensions to the HTTP protocol which allows users to collaboratively edit and manage files on remote web servers.
+home: https://truecharts.org/charts/incubator/webdav
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/webdav-logo.jpg
+keywords:
+  - webdav
+  - file-sharing
+kubeVersion: ">=1.16.0-0"
+maintainers:
+  - email: info@truecharts.org
+    name: TrueCharts
+    url: https://truecharts.org
+name: webdav
+sources:
+  - http://www.webdav.org/
+  - https://github.com/truenas/charts/tree/master/community/webdav
+type: application
+version: 7.0.35
+annotations:
+  truecharts.org/catagories: |
+    - metrics
+  truecharts.org/SCALE-support: "true"
+  truecharts.org/grade: U

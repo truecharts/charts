@@ -1,0 +1,171 @@
+# Include{groups}
+portals:
+  open:
+# Include{portalLink}
+questions:
+# Include{global}
+# Include{workload}
+# Include{workloadDeployment}
+
+# Include{replicas1}
+# Include{podSpec}
+# Include{containerMain}
+                                - variable: env
+                                  group: "App Configuration"
+                                  label: "Image Environment"
+                                  schema:
+                                    additional_attrs: true
+                                    type: dict
+                                    attrs:
+                                      - variable: GF_SECURITY_ADMIN_USER
+                                        label: "Admin User"
+                                        schema:
+                                          type: string
+                                          required: true
+                                          default: "admin"
+                                      - variable: GF_SECURITY_ADMIN_PASSWORD
+                                        label: "Admin Password"
+                                        schema:
+                                          type: string
+                                          required: true
+                                          private: true
+                                          default: "REPLACETHIS"
+                                      - variable: GF_INSTALL_PLUGINS
+                                        label: "Extra Plugins to Install"
+                                        description: "comma seperated"
+                                        schema:
+                                          type: string
+                                          default: ""
+                                      - variable: GF_AUTH_LDAP_ENABLED
+                                        label: "enable LDAP"
+                                        schema:
+                                          type: boolean
+                                          default: false
+                                      - variable: GF_AUTH_LDAP_ALLOW_SIGN_UP
+                                        label: "Allow LDAP Signup"
+                                        schema:
+                                          type: boolean
+                                          default: false
+                                      - variable: GF_AUTH_LDAP_CONFIG_FILE
+                                        label: "LDAP Config Path"
+                                        schema:
+                                          type: string
+                                          default: "/opt/bitnami/grafana/conf/ldap.toml"
+# Include{containerBasic}
+# Include{containerAdvanced}
+
+  - variable: webdavConfig
+    label: "WebDev Configuration"
+    group: App Configuration
+    schema:
+      type: dict
+      attrs:
+        - variable: authType
+          label: Authentication Type
+          description: Select the authentication type for WebDAV.
+          schema:
+            type: string
+            default: "none"
+            enum:
+              - value: "none"
+                description: No Authentication
+              - value: "basic"
+                description: Basic Authentication
+        - variable: username
+          label: Username
+          description: The username for basic authentication.
+          schema:
+            type: string
+            show_if: [["authType", "=", "basic"]]
+            required: true
+        - variable: password
+          label: Password
+          description: The password for basic authentication.
+          schema:
+            type: string
+            show_if: [["authType", "=", "basic"]]
+            required: true
+
+# Include{containerConfig}
+# Include{podOptions}
+# Include{serviceRoot}
+        - variable: main
+          label: "Main Service"
+          description: "The Primary service on which the healthcheck runs, often the webUI"
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: main
+                      label: "Main Service Port Configuration"
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: "Port"
+                            description: "This port exposes the container port on the service"
+                            schema:
+                              type: int
+                              default: 10038
+                              required: true
+# Include{serviceExpertRoot}
+            default: false
+# Include{serviceExpert}
+# Include{serviceList}
+# Include{persistenceRoot}
+        - variable: config
+          label: "App Config Storage"
+          description: "Stores the Application Configuration."
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+# Include{persistenceList}
+# Include{ingressRoot}
+        - variable: main
+          label: "Main Ingress"
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{ingressDefault}
+# Include{ingressTLS}
+# Include{ingressTraefik}
+# Include{ingressList}
+# Include{securityContextRoot}
+
+              - variable: runAsUser
+                label: "runAsUser"
+                description: "The UserID of the user running the application"
+                schema:
+                  type: int
+                  default: 568
+              - variable: runAsGroup
+                label: "runAsGroup"
+                description: "The groupID of the user running the application"
+                schema:
+                  type: int
+                  default: 568
+# Include{securityContextContainer}
+# Include{securityContextAdvanced}
+# Include{securityContextPod}
+              - variable: fsGroup
+                label: "fsGroup"
+                description: "The group that should own ALL storage."
+                schema:
+                  type: int
+                  default: 568
+
+# Include{resources}
+# Include{metrics}
+# Include{prometheusRule}
+# Include{advanced}
+# Include{addons}
+# Include{codeserver}
+# Include{netshoot}
+# Include{vpn}
+# Include{documentation}

@@ -1,0 +1,69 @@
+image:
+  repository: tccr.io/truecharts/httpd
+  pullPolicy: IfNotPresent
+  tag: "v2.8.2@sha256:48d0534b03444519b74dd231926f234bde2bdf6c5c5f01b650e1a0dc6d0375ff"
+  
+service:
+  main:
+    ports:
+      main:
+        port: 8080
+
+persistence:
+  httpd-conf:
+    enabled: true
+    type: configmap
+    objectName: config
+    targetSelector:
+      webdav:
+        webdav:
+          mountPath: /usr/local/apache2/conf/httpd.conf
+          subPath: httpd.conf
+          readOnly: true
+  webdav-conf:
+    # Mount config only if http is enabled
+    enabled: true
+    type: configmap
+    objectName: config
+    targetSelector:
+      webdav:
+        webdav:
+          mountPath: /usr/local/apache2/conf/Includes/webdav.conf
+          readOnly: true
+          subPath: webdav.conf
+  htauth:
+    # Mount config only if auth is enabled
+    enabled: '{{ ne .Values.webdavConfig.authType "none" }}'
+    type: secret
+    objectName: htauth
+    targetSelector:
+      webdav:
+        webdav:
+          mountPath: "/etc/apache2/webdavht{{ .Values.webdavConfig.authType }}"
+          subPath: htauth
+          readOnly: true
+  apachelock:
+    # Stores PID file and DavLockDB file
+    enabled: true
+    type: emptyDir
+    medium: Memory
+    size: 500Mi
+    targetSelector:
+      webdav:
+        webdav:
+          mountPath: /usr/local/apache2/var
+  shares:
+    enabled: true
+    type: hostPath
+    hostPath: /tmp
+    targetSelector:
+      webdav:
+        webdav:
+          # This path is used in the Alias directive in the webdav.conf
+          mountPath: /shares
+
+webdavConfig:
+  authType: none
+  username: ""
+  password: ""
+  additionalEnvs: []
