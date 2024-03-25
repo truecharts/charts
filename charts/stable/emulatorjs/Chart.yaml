@@ -7,7 +7,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 1.8.8
+appVersion: 1.8.9
 dependencies:
   - name: common
     version: 20.2.4
@@ -22,7 +22,7 @@ home: https://truecharts.org/charts/stable/emulatorjs
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/emulatorjs.png
 keywords:
   - emulatorjs
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/emulatorjs
   - https://ghcr.io/linuxserver/emulatorjs
 type: application
-version: 9.7.3
+version: 9.7.4
