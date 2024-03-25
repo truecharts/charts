@@ -1,0 +1,12 @@
+{{/* Make sure all variables are set properly */}}
+{{- include "tc.v1.common.loader.init" . -}}
+
+{{/* Disable [browser] if requested */}}
+{{- if not .Values.bigagi.features.browser.enabled -}}
+  {{- $_ := set .Values.workload.browser "enabled" false -}}
+  {{- $_ := set .Values.service.browser "enabled" false -}}
+  {{- $_ := set .Values.workload.main.podSpec.containers.main.env "PUPPETEER_WSS_ENDPOINT" "" -}}
+{{- end -}}
+
+{{/* Render the templates */}}
+{{- include "tc.v1.common.loader.apply" . -}}

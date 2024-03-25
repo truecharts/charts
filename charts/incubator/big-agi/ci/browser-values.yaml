@@ -1,0 +1,4 @@
+workloads:
+  bigagi:
+    features:
+      browser: true
