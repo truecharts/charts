@@ -40,7 +40,7 @@ ubuntuMATEImage:
   pullPolicy: Always
 fedoraMATEImage:
   repository: lscr.io/linuxserver/rdesktop
-  tag: fedora-mate@sha256:d787589d8ac526cd08b6e6981c2975b2ac3d818365f0405259ea79ba19b2197b
+  tag: fedora-mate@sha256:97915a909fc6a6231f7a51cdc79e432c2c082310441e5f2a5a9c7759c1bc241b
   pullPolicy: Always
 archMATEImage:
   repository: lscr.io/linuxserver/rdesktop

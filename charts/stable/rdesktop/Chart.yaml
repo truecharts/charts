@@ -35,4 +35,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/rdesktop
   - https://fleet.linuxserver.io/image?name=linuxserver/rdesktop
 type: application
-version: 8.7.56
+version: 8.7.57
