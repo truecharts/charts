@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/onedr0p/qbittorrent
   pullPolicy: IfNotPresent
-  tag: 4.6.3@sha256:f2895e632fe66299d8ccc68265cc11aea92a232b7d0844de9961864b3e504026
+  tag: 4.6.4@sha256:85f185207a81ec03e84b8302db06f1694c533c99e0efdb2acf0316d554d332e3
 qbitportforwardImage:
   repository: mjmeli/qbittorrent-port-forward-gluetun-server
   pullPolicy: IfNotPresent
