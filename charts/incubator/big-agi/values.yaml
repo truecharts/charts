@@ -1,13 +1,12 @@
 image:
   repository: ghcr.io/enricoros/big-agi
   pullPolicy: IfNotPresent
-  tag: 1.13.1@sha256:3d0322a786221ab0ba9d3c47ca1704e8555f7a30fa0e58908216067c1ae58ef3
+  tag: v1.14.1@sha256:f4889c34663c4c0f7a6950eb3c1c714e28b9b5118e2660a787c73687417dbd68
 browserImage:
   repository: browserless/chrome
   pullPolicy: IfNotPresent
   tag: 1.61.1-puppeteer-21.4.1@sha256:b6acad3ef2e1e0e3c2eb018add533570db2b34f5304682bad58c803b23ef7bd2
 
-# run as rootless first
 securityContext:
   container:
     readOnlyRootFilesystem: false

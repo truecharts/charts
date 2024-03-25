@@ -7,7 +7,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: incubator
 apiVersion: v2
-appVersion: 1.13.1
+appVersion: 1.14.1
 dependencies:
   - name: common
     version: 18.1.2
@@ -22,7 +22,7 @@ home: https://truecharts.org/charts/incubator/big-agi
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/big-agi.png
 keywords:
   - big-agi
-  - AI
+  - llm
   - Machine-Learning
 kubeVersion: ">=1.24.0-0"
 maintainers:
