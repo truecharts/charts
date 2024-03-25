@@ -22,7 +22,7 @@ home: https://truecharts.org/charts/stable/omada-controller
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/omada-controller.png
 keywords:
   - omada-controller
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/omada-controller
   - https://hub.docker.com/r/mbentley/omada-controller
 type: application
-version: 14.7.3
+version: 14.7.4
