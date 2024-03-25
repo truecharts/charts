@@ -23,7 +23,7 @@ icon: https://truecharts.org/img/hotlink-ok/chart-icons/clusterissuer.png
 keywords:
   - cert-manager
   - certificates
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/premium/clusterissuer
   - https://hub.docker.com/_/hello-world
 type: application
-version: 7.7.3
+version: 7.7.4
