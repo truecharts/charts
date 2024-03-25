@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/twofauth
   - https://hub.docker.com/r/2fauth/2fauth
 type: application
-version: 1.5.4
+version: 1.6.0

@@ -13,7 +13,6 @@ twofauth:
   app:
     name: 2FAuth
     site_owner: mail@example.com
-    url: http://localhost:8000
     session_lifetime: 120
     trusted_proxies: []
   mail:
@@ -62,7 +61,7 @@ workload:
                 key: APP_KEY
             APP_NAME: "{{ .Values.twofauth.app.name }}"
             SITE_OWNER: "{{ .Values.twofauth.app.site_owner }}"
-            APP_URL: "{{ .Values.twofauth.app.url }}"
+            APP_URL: "{{ .Values.chartContext.appUrl }}"
             SESSION_LIFETIME: "{{ .Values.twofauth.app.session_lifetime }}"
             TRUSTED_PROXIES: '{{ join "," .Values.twofauth.app.trusted_proxies }}'
             # MAIL

@@ -1,0 +1,8 @@
+ingress:
+  main:
+    enabled: true
+    hosts:
+      - host: twofauth.example.com
+        paths:
+          - path: /
+            pathType: Prefix
