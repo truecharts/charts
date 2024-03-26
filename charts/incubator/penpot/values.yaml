@@ -1,0 +1,186 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: penpotapp/frontend
+  tag: 1.19.3@sha256:cfc31dd9d63ec92759dc66b19da5401896748c6ec96ce1f3b06a21604eaa16e9
+backendImage:
+  pullPolicy: IfNotPresent
+  repository: penpotapp/backend
+  tag: 1.19.3@sha256:a800c1096e8d8774d1fbe8c6deac6244c284e3a4c407acc56a460f3289d09adb
+exporterImage:
+  pullPolicy: IfNotPresent
+  repository: penpotapp/exporter
+  tag: 1.19.3@sha256:e113a685d07bff470a2e75acab61fd61c5b24185d8931fd19b65d1f622061823
+  
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsUser: 0
+
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        targetPort: 80
+        port: 10592
+  backend:
+    enabled: true
+    type: ClusterIP
+    targetSelector: backend
+    ports:
+      backend:
+        enabled: true
+        port: 6060
+        targetSelector: backend
+
+hostAliases:
+  - hostnames:
+      - penpot-backend
+      - penpot-exporter
+      - penpot-frontend
+    ip: 127.0.0.1
+
+penpot:
+  flags:
+    backend_api_doc: false
+    cors: false
+    demo_users: false
+    demo_warning: false
+    insecure_register: false
+    log_emails: false
+    log_invitation_token: false
+    login: true
+    mail_verification: true
+    registration: true
+    secure_session_cookies: true
+    user_feedback: false
+  identity_providers:
+    github:
+      client_id: ""
+      client_secret: ""
+      enabled: false
+    gitlab:
+      base_uri: ""
+      client_id: ""
+      client_secret: ""
+      enabled: false
+    google:
+      client_id: ""
+      client_secret: ""
+      enabled: false
+    ldap:
+      attrs_email: ""
+      attrs_fullname: ""
+      attrs_username: ""
+      base_dn: ""
+      bind_dn: ""
+      bind_pass: ""
+      enabled: false
+      host: ""
+      port: 10389
+      ssl: false
+      starttls: false
+    oidc:
+      base_uri: ""
+      client_id: ""
+      client_secret: ""
+      enabled: false
+  public_uri: http://localhost:{{ .Values.service.main.ports.main.port }}
+  registration_domain_whitelist: []
+  smtp:
+    default_from: no-reply@example.com
+    default_reply_to: no-reply@example.com
+    enabled: false
+    host: ""
+    pass: ""
+    port: 587
+    ssl: false
+    tls: true
+    user: ""
+  telemetry_enabled: false
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          envFrom:
+            - secretRef:
+                name: penpot-secrets
+          env:
+            PENPOT_PUBLIC_URI: "{{ .Values.penpot.public_uri | quote }}"
+          probes:
+            liveness:
+              path: /
+              type: http
+            readiness:
+              path: /
+              type: http
+            startup:
+              path: /
+              type: http
+        exporter:
+          imageSelector: exporterImage
+          envFrom:
+            - secretRef:
+                name: penpot-secrets
+          env:
+            PENPOT_PUBLIC_URI: "http://penpot-frontend:{{ .Values.service.main.ports.main.targetPort }}"
+            PENPOT_REDIS_URI:
+              secretKeyRef:
+                name: rediscreds
+                key: url
+          probes:
+            liveness:
+              port: 6061
+              type: tcp
+            readiness:
+              port: 6061
+              type: tcp
+            startup:
+              port: 6061
+              type: tcp
+        backend:
+          imageSelector: backendImage
+          envFrom:
+            - secretRef:
+                name: penpot-secrets
+          env:
+            PENPOT_DATABASE_URI:
+              secretKeyRef:
+                name: cnpg-main-urls
+                key: std
+            PENPOT_REDIS_URI:
+              secretKeyRef:
+                name: rediscreds
+                key: url
+          probes:
+            liveness:
+              port: "{{ .Values.service.backend.ports.backend.port }}"
+              type: tcp
+            readiness:
+              port: "{{ .Values.service.backend.ports.backend.port }}"
+              type: tcp
+            startup:
+              port: "{{ .Values.service.backend.ports.backend.port }}"
+              type: tcp
+
+persistence:
+  assets:
+    enabled: true
+    mountPath: /opt/data/assets
+    targetSelectAll: true
+
+cnpg:
+  main:
+    enabled: true
+    database: penpot
+    user: penpot
+
+redis:
+  enabled: true
+
+portal:
+  open:
+    enabled: true

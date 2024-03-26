@@ -1,0 +1,45 @@
+annotations:
+  max_scale_version: 24.04.0
+  min_scale_version: 23.10.0
+  truecharts.org/SCALE-support: "true"
+  truecharts.org/category: media
+  truecharts.org/max_helm_version: "3.14"
+  truecharts.org/min_helm_version: "3.12"
+  truecharts.org/train: incubator
+apiVersion: v2
+appVersion: 1.19.3
+dependencies:
+  - name: common
+    version: 20.2.0
+    repository: oci://tccr.io/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+  - name: redis
+    version: 13.0.5
+    repository: oci://tccr.io/truecharts
+    condition: redis.enabled
+    alias: ""
+    tags: []
+    import-values: []
+deprecated: false
+description: Open Source design and prototyping platform.
+home: https://truecharts.org/charts/incubator/penpot
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/penpot.png
+keywords:
+  - penpot
+  - media
+  - design
+kubeVersion: ">=1.24.0-0"
+maintainers:
+  - name: TrueCharts
+    email: info@truecharts.org
+    url: https://truecharts.org
+name: penpot
+sources:
+  - https://github.com/penpot/penpot
+  - https://github.com/truecharts/charts/tree/master/charts/incubator/penpot
+  - https://hub.docker.com/r/penpotapp/backend
+type: application
+version: 5.0.0

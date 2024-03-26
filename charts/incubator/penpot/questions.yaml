@@ -1,0 +1,451 @@
+# Include{groups}
+portals:
+  open:
+# Include{portalLink}
+questions:
+# Include{global}
+# Include{workload}
+# Include{workloadDeployment}
+# Include{replicas1}
+# Include{podSpec}
+# Include{containerMain}
+# Include{containerBasic}
+# Include{containerAdvanced}
+# Include{containerConfig}
+# Include{podOptions}
+  - variable: penpot
+    group: App Configuration
+    label: Penpot Configuration
+    schema:
+      additional_attrs: true
+      type: dict
+      attrs:
+        - variable: public_uri
+          label: Public URI
+          description: Public URI.
+          schema:
+            type: string
+            required: true
+            default: ""
+        - variable: telemetry_enabled
+          label: Telemetry Enabled
+          description: Telemetry Enabled.
+          schema:
+            type: boolean
+            default: false
+        - variable: flags
+          label: Flags
+          description: Feature flags
+          schema:
+            additional_attrs: true
+            type: dict
+            required: true
+            attrs:
+              - variable: registration
+                label: Registration
+                description: Enables or disables, the registration process
+                schema:
+                  type: boolean
+                  default: true
+              - variable: insecure_register
+                label: Insecure Register
+                description: Enables or disables, the insecure process of profile registration deactivating the email verification process
+                schema:
+                  type: boolean
+                  default: false
+              - variable: login
+                label: Login
+                description: Enables or disables, the password based login form
+                schema:
+                  type: boolean
+                  default: true
+              - variable: demo_users
+                label: Demo Users
+                description: Enables or disables, the creation of demo users without the need of a registration process.
+                schema:
+                  type: boolean
+                  default: false
+              - variable: demo_warning
+                label: Demo Warning
+                description: Enables or disables, demo warning in the register and login page saying that this is a demonstration purpose instance
+                schema:
+                  type: boolean
+                  default: false
+              - variable: user_feedback
+                label: User Feedback
+                description: Enables or disables, the feedback form at the dashboard
+                schema:
+                  type: boolean
+                  default: false
+              - variable: mail_verification
+                label: Mail Verification
+                description: Enables or disables, mail verification
+                schema:
+                  type: boolean
+                  default: true
+              - variable: log_invitation_token
+                label: Log Invitation Token
+                description: Enables or disables, invitation token logging in console
+                schema:
+                  type: boolean
+                  default: false
+              - variable: log_emails
+                label: Log Emails
+                description: Enables or disables, email logging in console. This only works if smtp is not enabled.
+                schema:
+                  type: boolean
+                  default: false
+              - variable: secure_session_cookies
+                label: Secure Session Cookies
+                description: Enables or disables, the secure flag on cookies
+                schema:
+                  type: boolean
+                  default: true
+              - variable: cors
+                label: CORS
+                description: Enables or disables, the default cors configuration that allows all domains
+                schema:
+                  type: boolean
+                  default: false
+              - variable: backend_api_doc
+                label: API Docs
+                description: Enables or disables, /api/_doc endpoint that lists all rpc methods available on backend.
+                schema:
+                  type: boolean
+                  default: false
+        - variable: registration_domain_whitelist
+          label: Registration Domain Whitelist
+          description: Registration Domain Whitelist
+          schema:
+            type: list
+            required: true
+            default: []
+            items:
+              - variable: domain_whitelist
+                label: Domain Whitelist Entry
+                schema:
+                  type: string
+                  required: true
+                  default: ""
+        - variable: smtp
+          group: App Configuration
+          label: SMTP Configuration
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+              - variable: enabled
+                label: Enable SMTP
+                schema:
+                  type: boolean
+                  default: false
+                  show_subquestions_if: true
+                  subquestions:
+                    - variable: default_from
+                      label: Default From
+                      schema:
+                        type: string
+                        required: true
+                        default: ""
+                    - variable: default_reply_to
+                      label: Default Reply To
+                      schema:
+                        type: string
+                        required: true
+                        default: ""
+                    - variable: host
+                      label: SMTP Host
+                      schema:
+                        type: string
+                        required: true
+                        default: ""
+                    - variable: port
+                      label: SMTP Port
+                      schema:
+                        type: int
+                        required: true
+                        default: 587
+                    - variable: user
+                      label: SMTP User
+                      schema:
+                        type: string
+                        required: true
+                        default: ""
+                    - variable: pass
+                      label: SMTP Pass
+                      schema:
+                        type: string
+                        required: true
+                        private: true
+                        default: ""
+        - variable: identity_providers
+          group: App Configuration
+          label: Identity Providers Configuration
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+              - variable: google
+                label: Google Identity Provider
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: enabled
+                      label: Show Google Settings
+                      schema:
+                        type: boolean
+                        default: false
+                        show_subquestions_if: true
+                        subquestions:
+                          - variable: client_id
+                            label: Client ID
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: client_secret
+                            label: Client Secret
+                            schema:
+                              type: string
+                              private: true
+                              required: true
+                              default: ""
+              - variable: github
+                label: Github Identity Provider
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: enabled
+                      label: Show Github Settings
+                      schema:
+                        type: boolean
+                        default: false
+                        show_subquestions_if: true
+                        subquestions:
+                          - variable: client_id
+                            label: Client ID
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: client_secret
+                            label: Client Secret
+                            schema:
+                              type: string
+                              private: true
+                              required: true
+                              default: ""
+              - variable: gitlab
+                label: Gitlab Identity Provider
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: enabled
+                      label: Show Gitlab Settings
+                      schema:
+                        type: boolean
+                        default: false
+                        show_subquestions_if: true
+                        subquestions:
+                          - variable: base_uri
+                            label: Base URI
+                            schema:
+                              type: string
+                              required: true
+                              default: "https://gitlab.com"
+                          - variable: client_id
+                            label: Client ID
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: client_secret
+                            label: Client Secret
+                            schema:
+                              type: string
+                              private: true
+                              required: true
+                              default: ""
+              - variable: oidc
+                label: OIDC Identity Provider
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: enabled
+                      label: Show OIDC Settings
+                      schema:
+                        type: boolean
+                        default: false
+                        show_subquestions_if: true
+                        subquestions:
+                          - variable: base_uri
+                            label: Base URI
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: client_id
+                            label: Client ID
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: client_secret
+                            label: Client Secret
+                            schema:
+                              type: string
+                              private: true
+                              required: true
+                              default: ""
+              - variable: ldap
+                label: LDAP Identity Provider
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: enabled
+                      label: Show LDAP Settings
+                      schema:
+                        type: boolean
+                        default: false
+                        show_subquestions_if: true
+                        subquestions:
+                          - variable: host
+                            label: Host
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: port
+                            label: Port
+                            schema:
+                              type: int
+                              required: true
+                              default: 587
+                          - variable: ssl
+                            label: SSL
+                            schema:
+                              type: boolean
+                              default: false
+                          - variable: starttls
+                            label: StartTLS
+                            schema:
+                              type: boolean
+                              default: false
+                          - variable: base_dn
+                            label: Base DN
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: bind_dn
+                            label: Bind DN
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: bind_pass
+                            label: Bind Pass
+                            schema:
+                              type: string
+                              private: true
+                              required: true
+                              default: ""
+                          - variable: attrs_username
+                            label: ATTRS Username
+                            schema:
+                              type: string
+                              rquired: true
+                              default: ""
+                          - variable: attrs_email
+                            label: ATTRS Email
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+                          - variable: attrs_fullname
+                            label: ATTRS Fullname
+                            schema:
+                              type: string
+                              required: true
+                              default: ""
+# Include{serviceRoot}
+        - variable: main
+          label: Main Service
+          description: The Primary service on which the healthcheck runs, often the webUI
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: main
+                      label: Main Service Port Configuration
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: Port
+                            description: This port exposes the container port on the service
+                            schema:
+                              type: int
+                              default: 10592
+                              required: true
+# Include{serviceExpertRoot}
+# Include{serviceExpert}
+# Include{serviceList}
+# Include{persistenceRoot}
+        - variable: assets
+          label: App Assets Storage
+          description: Stores the Application Assets.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+# Include{persistenceList}
+# Include{ingressRoot}
+        - variable: main
+          label: Main Ingress
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{ingressDefault}
+# Include{ingressAdvanced}
+# Include{ingressList}
+# Include{securityContextRoot}
+              - variable: runAsUser
+                label: "runAsUser"
+                description: "The UserID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+              - variable: runAsGroup
+                label: "runAsGroup"
+                description: "The groupID of the user running the application"
+                schema:
+                  type: int
+                  default: 0
+# Include{securityContextContainer}
+# Include{securityContextAdvanced}
+# Include{securityContextPod}
+              - variable: fsGroup
+                label: "fsGroup"
+                description: "The group that should own ALL storage."
+                schema:
+                  type: int
+                  default: 568
+# Include{resources}
+# Include{postgresql}
+# Include{advanced}
+# Include{addons}
+# Include{codeserver}
+# Include{netshoot}
+# Include{vpn}
+# Include{documentation}
