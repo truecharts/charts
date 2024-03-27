@@ -7,7 +7,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 2024.03.10
+appVersion: 2024.03.26
 dependencies:
   - name: common
     version: 20.2.4
@@ -24,7 +24,7 @@ keywords:
   - minio
   - s3
   - storage
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -35,4 +35,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/minio
   - https://hub.docker.com/r/minio/minio
 type: application
-version: 11.8.3
+version: 11.8.4
