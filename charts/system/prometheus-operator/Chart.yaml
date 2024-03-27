@@ -10,14 +10,14 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.4
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
     tags: []
     import-values: []
   - name: kube-prometheus-stack
-    version: 56.21.0
+    version: 56.21.4
     repository: oci://ghcr.io/prometheus-community/charts
     condition: ""
     alias: kps
@@ -42,4 +42,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/system/prometheus-operator
   - https://github.com/truecharts/containers/tree/master/apps/alpine
 type: application
-version: 6.9.4
+version: 6.9.5

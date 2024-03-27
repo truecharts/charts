@@ -10,14 +10,14 @@ apiVersion: v2
 appVersion: 2.51.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.4
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
     tags: []
     import-values: []
   - name: kube-prometheus-stack
-    version: 56.21.0
+    version: 56.21.4
     repository: oci://ghcr.io/prometheus-community/charts
     condition: ""
     alias: kps
@@ -39,8 +39,8 @@ sources:
   - https://github.com/prometheus-community/helm-charts
   - https://github.com/prometheus-operator/kube-prometheus
   - https://github.com/truecharts/charts/tree/master/charts/premium/prometheus
-  - https://quay.io/thanos/thanos
-  - https://hub.docker.com/r/bitnami/prometheus
   - https://hub.docker.com/r/bitnami/alertmanager
+  - https://hub.docker.com/r/bitnami/prometheus
+  - https://quay.io/thanos/thanos
 type: application
-version: 17.12.3
+version: 17.12.4
