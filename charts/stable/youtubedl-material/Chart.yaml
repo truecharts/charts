@@ -17,7 +17,7 @@ dependencies:
     tags: []
     import-values: []
   - name: mongodb
-    version: 12.5.4
+    version: 12.7.5
     repository: oci://tccr.io/truecharts
     condition: mongodb.enabled
     alias: ""
@@ -40,4 +40,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/youtubedl-material
   - https://ghcr.io/tzahi12345/youtubedl-material
 type: application
-version: 10.8.4
+version: 10.9.0
