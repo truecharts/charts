@@ -30,7 +30,7 @@ icon: https://truecharts.org/img/hotlink-ok/chart-icons/velero.png
 keywords:
   - velero
   - backup
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -42,4 +42,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/system/velero
   - https://github.com/truecharts/containers/tree/master/apps/alpine
 type: application
-version: 4.7.4
+version: 4.7.5
