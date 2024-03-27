@@ -1,0 +1,37 @@
+annotations:
+  max_scale_version: 24.04.0
+  min_scale_version: 23.10.0
+  truecharts.org/SCALE-support: "true"
+  truecharts.org/category: helpdesk
+  truecharts.org/max_helm_version: "3.14"
+  truecharts.org/min_helm_version: "3.11"
+  truecharts.org/train: incubator
+apiVersion: v2
+appVersion: latest
+dependencies:
+  - name: common
+    version: 20.2.4
+    repository: oci://tccr.io/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+deprecated: false
+description: An open source ticket management & help desk solution.
+home: https://truecharts.org/charts/incubator/peppermint
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/peppermint.png
+keywords:
+  - peppermint
+  - tickets
+kubeVersion: '>=1.24.0-0'
+maintainers:
+  - name: TrueCharts
+    email: info@truecharts.org
+    url: https://truecharts.org
+name: peppermint
+sources:
+  - https://github.com/Peppermint-Lab/peppermint
+  - https://github.com/truecharts/charts/tree/master/charts/incubator/peppermint
+  - https://hub.docker.com/r/pepperlabs/peppermint
+type: application
+version: 0.0.1
