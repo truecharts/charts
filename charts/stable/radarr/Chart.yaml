@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 5.3.6.8612
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://ghcr.io/onedr0p/exportarr
   - https://ghcr.io/onedr0p/radarr
 type: application
-version: 21.5.4
+version: 21.5.5

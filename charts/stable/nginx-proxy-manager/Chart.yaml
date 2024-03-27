@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 2.11.1
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -43,4 +43,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/nginx-proxy-manager
   - https://hub.docker.com/r/jc21/nginx-proxy-manager
 type: application
-version: 9.12.9
+version: 9.12.10

@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 3.0.1
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/truecommand
   - https://hub.docker.com/r/ixsystems/truecommand
 type: application
-version: 19.7.4
+version: 19.7.5

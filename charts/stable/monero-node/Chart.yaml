@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 0.18.3.3
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/monero-node
   - https://ghcr.io/sethforprivacy/simple-monerod
 type: application
-version: 6.6.7
+version: 6.6.8

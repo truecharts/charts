@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 1.7.2
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -41,4 +41,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/gaseous-server
   - https://hub.docker.com/r/gaseousgames/gaseousserver
 type: application
-version: 1.8.9
+version: 1.8.10

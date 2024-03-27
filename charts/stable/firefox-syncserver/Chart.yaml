@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 1.8.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/firefox-syncserver
   - https://ghcr.io/crazy-max/firefox-syncserver
 type: application
-version: 17.7.4
+version: 17.7.5

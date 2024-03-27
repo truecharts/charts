@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 4.2.9
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://ghcr.io/crazy-max/rtorrent-rutorrent
   - https://ghcr.io/thde/rtorrent_exporter
 type: application
-version: 4.7.4
+version: 4.7.5

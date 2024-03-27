@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 0.13.1
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -38,4 +38,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/unpackerr
   - https://hub.docker.com/r/golift/unpackerr
 type: application
-version: 13.7.4
+version: 13.7.5

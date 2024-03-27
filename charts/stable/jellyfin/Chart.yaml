@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 10.8.13
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://hub.docker.com/r/jellyfin/jellyfin
   - https://hub.docker.com/r/alpine/socat
 type: application
-version: 18.7.5
+version: 18.7.6

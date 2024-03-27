@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -42,4 +42,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/system/prometheus-operator
   - https://github.com/truecharts/containers/tree/master/apps/alpine
 type: application
-version: 6.9.4
+version: 6.9.5

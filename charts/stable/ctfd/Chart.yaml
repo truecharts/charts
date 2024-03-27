@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 3.7.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -48,4 +48,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/ctfd
   - https://ghcr.io/ctfd/ctfd
 type: application
-version: 4.16.6
+version: 4.16.7

@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 7.41.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -42,4 +42,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/wekan
   - https://hub.docker.com/r/wekanteam/wekan
 type: application
-version: 14.15.8
+version: 14.15.9

@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 16.2.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/xwiki
   - https://hub.docker.com/_/xwiki
 type: application
-version: 12.9.1
+version: 12.9.2

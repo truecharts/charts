@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 2.51.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -43,4 +43,4 @@ sources:
   - https://hub.docker.com/r/bitnami/prometheus
   - https://hub.docker.com/r/bitnami/alertmanager
 type: application
-version: 17.12.3
+version: 17.12.4

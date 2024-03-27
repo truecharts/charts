@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 28.0.3
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -50,4 +50,4 @@ sources:
   - https://hub.docker.com/r/clamav/clamav
   - https://github.com/truecharts/containers/tree/master/apps/nextcloud-imaginary
 type: application
-version: 29.8.6
+version: 29.8.7

@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -44,4 +44,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/tsn-ranksystem
   - https://hub.docker.com/r/serverlein/tsn-ranksystem-webserver
 type: application
-version: 1.2.10
+version: 1.2.11

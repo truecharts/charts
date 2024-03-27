@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 1.10.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -45,4 +45,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/hasty-paste
   - https://ghcr.io/enchant97/hasty-paste
 type: application
-version: 6.8.3
+version: 6.8.4

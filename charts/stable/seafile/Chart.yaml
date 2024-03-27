@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 11.0.6
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -43,4 +43,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/seafile
   - https://hub.docker.com/r/seafileltd/seafile-mc
 type: application
-version: 5.12.9
+version: 5.12.10

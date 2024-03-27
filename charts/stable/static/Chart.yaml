@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: ee8a20c
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -37,4 +37,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/static
   - https://ghcr.io/nicholaswilde/static
 type: application
-version: 10.7.4
+version: 10.7.5

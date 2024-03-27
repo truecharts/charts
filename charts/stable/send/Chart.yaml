@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -41,4 +41,4 @@ sources:
   - https://gitlab.com/timvisee/send
   - https://github.com/truecharts/charts/tree/master/charts/stable/send
 type: application
-version: 5.8.3
+version: 5.8.4

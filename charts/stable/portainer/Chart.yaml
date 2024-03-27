@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 2.20.0
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://hub.docker.com/r/portainer/portainer-ee
   - https://hub.docker.com/r/portainer/portainer-ce
 type: application
-version: 8.9.3
+version: 8.9.4

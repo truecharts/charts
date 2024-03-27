@@ -10,7 +10,7 @@ apiVersion: v2
 appVersion: 2024.2.2
 dependencies:
   - name: common
-    version: 20.2.9
+    version: 20.2.10
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -45,4 +45,4 @@ sources:
   - https://ghcr.io/goauthentik/server
   - https://ghcr.io/goauthentik/proxy
 type: application
-version: 24.8.3
+version: 24.8.4
