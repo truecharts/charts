@@ -1,6 +1,6 @@
 image:
   repository: qmcgaw/ddns-updater
-  tag: v2.5.0@sha256:6e5dd1066de1f4ea3ca8d0a8982ab65231e1687a7c519a86c133a788eafa2085
+  tag: v2.6.0@sha256:e1bc0c878a781fa5fdb12032d1b748547db6d1b10d3acc7f5f42630105a44a42
   pullPolicy: IfNotPresent
 service:
   main:
