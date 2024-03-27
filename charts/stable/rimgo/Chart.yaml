@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/rimgo
   - https://quay.io/pussthecatorg/rimgo
 type: application
-version: 6.7.11
+version: 6.7.12
