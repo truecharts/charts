@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: xthursdayx/gpodder-docker
-  tag: latest@sha256:dc402262ada60b969d9dca5f4eda81d763d138c87a7c57e72a417d5c292cfb9d
+  tag: latest@sha256:7f9b748fd60f5290b46bc2eff3f266ff8f8c7c489d1453dbbd884dbfd507f80a
 persistence:
   config:
     enabled: true
