@@ -17,14 +17,14 @@ dependencies:
     tags: []
     import-values: []
   - name: mariadb
-    version: 13.7.5
+    version: 13.7.4
     repository: oci://tccr.io/truecharts
     condition: mariadb.enabled
     alias: ""
     tags: []
     import-values: []
   - name: redis
-    version: 13.2.2
+    version: 13.2.5
     repository: oci://tccr.io/truecharts
     condition: redis.enabled
     alias: ""
@@ -47,4 +47,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/anonaddy
   - https://hub.docker.com/r/anonaddy/anonaddy
 type: application
-version: 20.15.6
+version: 20.15.7
