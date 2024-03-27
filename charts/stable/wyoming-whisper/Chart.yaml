@@ -22,7 +22,7 @@ home: https://truecharts.org/charts/stable/wyoming-whisper
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/wyoming-whisper.png
 keywords:
   - wyoming-whisper
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/wyoming-whisper
   - https://hub.docker.com/r/rhasspy/wyoming-whisper
 type: application
-version: 4.7.4
+version: 4.7.5

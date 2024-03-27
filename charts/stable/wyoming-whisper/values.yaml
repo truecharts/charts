@@ -1,7 +1,7 @@
 image:
   repository: rhasspy/wyoming-whisper
   pullPolicy: IfNotPresent
-  tag: latest@sha256:8ab98d933feb64b09882574303119176d0dda61d1db2a2fc6972016a1699944c
+  tag: latest@sha256:ceaa162ec05e53b8fa883182cdbceb72e6a1422740ec35be038c9faa278323b3
 wyoming_whisper:
   language: en
   model: tiny-int8
