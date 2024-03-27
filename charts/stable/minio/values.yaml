@@ -1,6 +1,6 @@
 image:
   repository: minio/minio
-  tag: RELEASE.2024-03-10T02-53-48Z@sha256:b9e644d40add58b121f7801e9ec0e19a58f836a366a88011e8951e3166aaf16e
+  tag: RELEASE.2024-03-26T22-10-45Z@sha256:88af73451c7981406c1477d9fb99543be3ef2d8aea847fcf8667a38c323f217c
   pullPolicy: IfNotPresent
 service:
   main:
