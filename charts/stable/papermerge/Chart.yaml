@@ -7,7 +7,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 2.1.9
+appVersion: 3.0.3
 dependencies:
   - name: common
     version: 20.2.9
@@ -29,7 +29,7 @@ home: https://truecharts.org/charts/stable/papermerge
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/papermerge.png
 keywords:
   - papermerge
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -40,4 +40,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/papermerge
   - https://hub.docker.com/r/papermerge/papermerge
 type: application
-version: 12.8.3
+version: 13.0.0
