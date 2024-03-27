@@ -1,7 +1,7 @@
 image:
   repository: shlinkio/shlink-web-client
   pullPolicy: IfNotPresent
-  tag: 3.10.2@sha256:b96145d258f69e8c364d82a6a6f7278ddd472ead04b06f09b0d835bb9342e6af
+  tag: 4.1.0@sha256:efd725a7cb264e1a5884e4b93f47c6e38b6b58a4de47e1aaac5aec02d8f966c6
 service:
   main:
     ports:
