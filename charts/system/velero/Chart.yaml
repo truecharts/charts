@@ -17,7 +17,7 @@ dependencies:
     tags: []
     import-values: []
   - name: velero
-    version: 5.4.1
+    version: 6.0.0
     repository: oci://ghcr.io/vmware-tanzu/charts
     condition: ""
     alias: velero
@@ -42,4 +42,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/system/velero
   - https://github.com/truecharts/containers/tree/master/apps/alpine
 type: application
-version: 4.7.4
+version: 4.8.0
