@@ -1,0 +1,166 @@
+# Include{groups}
+portals:
+  open:
+# Include{portalLink}
+questions:
+# Include{global}
+# Include{workload}
+# Include{workloadDeployment}
+# Include{replicas1}
+# Include{podSpec}
+# Include{containerMain}
+
+                                - variable: imageSelector
+                                  label: Select Image
+                                  schema:
+                                    type: string
+                                    default: image
+                                    enum:
+                                      - value: image
+                                        description: CPU Image
+                                      - value: gpuImage
+                                        description: GPU Image
+
+# Include{containerBasic}
+# Include{containerAdvanced}
+  - variable: whishper
+    group: App Configuration
+    label: Whishper
+    schema:
+      additional_attrs: true
+      type: dict
+      attrs:
+        - variable: translate
+          label: Translate Configuration
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+              - variable: image
+                label: Select Image
+                schema:
+                  type: string
+                  default: image
+                  enum:
+                    - value: translateImage
+                      description: Translate Image
+                    - value: translateGpuImage
+                      description: Translate GPU Image
+              - variable: language
+                label: Language Configuration
+                schema:
+                  additional_attrs: true
+                  type: dict
+                  attrs:
+                    - variable: source
+                      label: Source
+                      schema:
+                        type: string
+                        default: "en"
+                    - variable: target
+                      label: Target
+                      schema:
+                        type: string
+                        default: "es"
+
+# Include{containerConfig}
+# Include{podOptions}
+# Include{serviceRoot}
+        - variable: main
+          label: Main Service
+          description: The Primary service on which the Server runs on
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{serviceSelectorLoadBalancer}
+# Include{serviceSelectorExtras}
+                    - variable: main
+                      label: Main Service Port Configuration
+                      schema:
+                        additional_attrs: true
+                        type: dict
+                        attrs:
+                          - variable: port
+                            label: Port
+                            description: This port exposes the container port on the service
+                            schema:
+                              type: int
+                              default: 9000
+                              required: true
+
+
+# Include{serviceExpertRoot}
+# Include{serviceExpert}
+# Include{serviceList}
+# Include{persistenceRoot}
+        - variable: app
+          label: App Data
+          description: Stores the Application?.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+        - variable: data
+          label: App data Storage
+          description: Stores the Application data.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+        - variable: cache-pip
+          label: cache-pip  Storage
+          description: Stores the Application cache-pip.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+        - variable: cache-poetry
+          label: cache-poetry Storage
+          description: Stores the Application cache-poetry.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+        - variable: cache-whisper
+          label: cache-whisper Storage
+          description: Stores the Application cache-whisper.
+          schema:
+            additional_attrs: true
+            type: dict
+            attrs:
+# Include{persistenceBasic}
+# Include{persistenceList}
+# Include{securityContextRoot}
+              - variable: runAsUser
+                label: "runAsUser"
+                description: "The UserID of the user running the application"
+                schema:
+                  type: int
+                  default: 568
+              - variable: runAsGroup
+                label: "runAsGroup"
+                description: "The groupID of the user running the application"
+                schema:
+                  type: int
+                  default: 568
+# Include{securityContextContainer}
+# Include{securityContextAdvanced}
+# Include{securityContextPod}
+              - variable: fsGroup
+                label: "fsGroup"
+                description: "The group that should own ALL storage."
+                schema:
+                  type: int
+                  default: 568
+# Include{resources}
+# Include{advanced}
+# Include{addons}
+# Include{codeserver}
+# Include{netshoot}
+# Include{vpn}
+# Include{documentation}

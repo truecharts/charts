@@ -1,0 +1,153 @@
+image:
+  repository: pluja/whishper
+  tag: v3.1.3@sha256:a54b82c63e79340e2ee0edd5d6d29ab97b26f4367f19757493897e28be5f1d2d
+  pullPolicy: Always
+gpuImage:
+  repository: pluja/whishper
+  tag: v3.1.3-gpu@2e4b017fab27a6309825973ee65ff5d89b33f9c33307bcd95335301ed63d7caf
+  pullPolicy: Always
+translateImage:
+  repository: libretranslate/libretranslate
+  tag: v1.5.6@sha256:92addfc283191facad5473230f0359a16ea9127bcc3f7cf2da1d9b945a83abe7
+  pullPolicy: Always
+translateGpuImage:
+  repository: libretranslate/libretranslate
+  tag: v1.5.6-cuda@sha256:a1676094f458932a878f98ffbb538cbd77179ad911ac140a1f1e997d6dc4b92a
+  pullPolicy: Always
+
+securityContext:
+  runAsUser: 0
+  runAsGroup: 0
+  readOnlyRootFilesystem: false
+
+service:
+  main:
+    enabled: true
+    ports:
+      main:
+        enabled: true
+        protocol: http
+        port: 8082
+  translate:
+    enabled: true
+    type: ClusterIP
+    targetSelector: translate
+    ports:
+      translate:
+        enabled: true
+        protocol: http
+        port: 5000
+        targetSelector: translate
+
+whishper:
+  # cpu | gpu | cuda
+  profile: cpu
+  translate:
+    image: translateImage
+    language:
+      source: "en"
+      target: "es"
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          imageSelector: image
+          args:
+            - /app/whishper
+            - -addr
+            - '{{ printf ":%s" .Values.service.main.ports.main.port }}'
+          env:
+            DB_ENDPOINT:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s:27017" .Release.Name "mongodbcreds" }}'
+                key: plainhost
+            DB_USER: "{{ .Values.mongodb.mongodbUsername }}"
+            DB_PASS: 
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mongodbcreds" }}'
+                key: mongodb-password
+            WHISHPER_HOST: '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.main.ports.main.port }}'
+            PUBLIC_INTERNAL_API_HOST: '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.main.ports.main.port }}'
+            # ASR_ENDPOINT: ""
+            PUBLIC_TRANSLATION_API_HOST: ""
+            PUBLIC_API_HOST:  '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.main.ports.main.port }}'
+            # cpu | gpu | cuda
+            PUBLIC_WHISHPER_PROFILE: cpu
+            # CPU_THREADS: 4
+            WHISPER_MODELS_DIR: "{{.Values.persistence.models.targetSelector.main.main.mountPath }}"
+            UPLOAD_DIR: "{{.Values.persistence.uploads.targetSelector.main.main.mountPath }}"
+  translate:
+    enabled: true
+    type: Deployment
+    strategy: RollingUpdate
+    replicas: 1
+    podSpec:
+      containers:
+        translate:
+          primary: true
+          enabled: true
+          imageSelector: "{{ .Values.whishper.translate.image }}"
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              port: "{{ .Values.service.translate.ports.translate.port }}"
+            readiness:
+              enabled: true
+              type: http
+              port: "{{ .Values.service.translate.ports.translate.port }}"
+            startup:
+              enabled: true
+              type: tcp
+              port: "{{ .Values.service.translate.ports.translate.port }}"
+          env:
+            LT_PORT: "{{ .Values.service.translate.ports.translate.port }}"
+            LT_DISABLE_WEB_UI: true
+            LT_UPDATE_MODELS: true
+            LT_FRONTEND_LANGUAGE_SOURCE: "{{ .Values.whishper.translate.language.source }}"
+            LT_FRONTEND_LANGUAGE_TARGET: "{{ .Values.whishper.translate.language.target }}"
+
+persistence:
+  uploads:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: /app/uploads
+  models:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: /app/models
+  logs:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: /var/log/whishper
+  libretranslate-date:
+    enabled: true
+    targetSelector:
+      translate:
+        translate:
+          mountPath: /home/libretranslate/.local/share
+  libretranslate-cache:
+    enabled: true
+    targetSelector:
+      translate:
+        translate:
+          mountPath: /home/libretranslate/.local/cache
+
+mongodb:
+  enabled: true
+  mongodbUsername: whishper
+  mongodbDatabase: whishper
+
+portal:
+  open:
+    enabled: true
