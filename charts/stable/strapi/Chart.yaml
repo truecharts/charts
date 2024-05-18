@@ -7,7 +7,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 4.16.2
+appVersion: 4.24.1
 dependencies:
   - name: common
     version: 23.0.0
@@ -23,7 +23,7 @@ icon: https://truecharts.org/img/hotlink-ok/chart-icons/strapi.webp
 keywords:
   - strapi
   - cms
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -35,4 +35,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/strapi
   - https://hub.docker.com/r/naskio/strapi
 type: application
-version: 14.0.4
+version: 14.1.0
