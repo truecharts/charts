@@ -1,6 +1,6 @@
 image:
   repository: baserow/baserow
-  tag: 1.23.0@sha256:c7a436efb381eec7416ed578fe83c142670cf51fe5f403946a192695a6b07b78
+  tag: 1.24.2@sha256:c0f601fd71ea00f76eead4421f4a146b49402e51de2acfa2c96b3a27500441b4
   pullPolicy: IfNotPresent
 securityContext:
   container:
@@ -35,7 +35,7 @@ workload:
             REDIS_PROTOCOL: "redis"
             BASEROW_CADDY_ADDRESSES: ":{{ .Values.service.main.ports.main.port }}"
             # User Defined
-
+            BASEROW_TRIGGER_SYNC_TEMPLATES_AFTER_MIGRATION: false
             BASEROW_PUBLIC_URL: "http://localhost:10228"
             FROM_EMAIL: ""
             EMAIL_SMTP: ""

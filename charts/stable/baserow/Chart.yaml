@@ -7,7 +7,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 1.23.0
+appVersion: 1.24.2
 dependencies:
   - name: common
     version: 23.0.0
@@ -29,7 +29,7 @@ home: https://truecharts.org/charts/stable/baserow
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/baserow.webp
 keywords:
   - baserow
-kubeVersion: ">=1.24.0-0"
+kubeVersion: '>=1.24.0-0'
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
@@ -40,4 +40,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/baserow
   - https://hub.docker.com/r/baserow/baserow
 type: application
-version: 13.1.0
+version: 13.2.0
