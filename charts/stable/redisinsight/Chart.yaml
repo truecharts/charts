@@ -6,7 +6,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 1.14.0
+appVersion: 2.50.0
 dependencies:
   - name: common
     version: 24.1.2
@@ -34,4 +34,4 @@ sources:
   - https://hub.docker.com/r/redislabs/redisinsight
   - https://redis.com/redis-enterprise/redis-insight/
 type: application
-version: 8.1.2
+version: 9.0.0
