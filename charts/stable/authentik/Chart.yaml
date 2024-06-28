@@ -6,7 +6,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 2024.4.2
+appVersion: 2024.4.3
 dependencies:
   - name: common
     version: 24.1.2
@@ -44,4 +44,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/authentik
   - https://goauthentik.io/docs/
 type: application
-version: 27.2.0
+version: 27.2.4
