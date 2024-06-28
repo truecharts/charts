@@ -1,7 +1,7 @@
 image:
   repository: papermerge/papermerge
   pullPolicy: IfNotPresent
-  tag: 2.1.9@sha256:f3b1d8f73892eeddb0e1515d1891f98ba0c6f53698fa9eb126191fb4c55fc828
+  tag: 3.2.0@sha256:099a2af951faa0bdd41b4eb7fd5138624a4ce799b9ef30eb97db1b27ceae3e85
 securityContext:
   container:
     runAsNonRoot: false

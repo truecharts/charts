@@ -6,7 +6,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 2.1.9
+appVersion: 3.2.0
 dependencies:
   - name: common
     version: 24.1.2
@@ -39,4 +39,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/papermerge
   - https://hub.docker.com/r/papermerge/papermerge
 type: application
-version: 14.2.0
+version: 15.0.0
