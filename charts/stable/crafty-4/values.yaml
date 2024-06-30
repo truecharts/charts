@@ -20,7 +20,7 @@ service:
       redirects:
         enabled: true
         port: 10587
-        protocol: https
+        protocol: http
         targetPort: 8000
   minecraft:
     enabled: true
