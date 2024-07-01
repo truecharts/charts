@@ -1,7 +1,7 @@
 image:
   repository: leonismoe/ariang
   pullPolicy: IfNotPresent
-  tag: 1.3.6@sha256:e95f99b59676f8289f09f5c914f29af8cfe16d9b55d63c7d837d9b8766af098b
+  tag: 1.3.7@sha256:e583d57820869e711c82e933ef90963653f6450cdc22f4d54cc9ee796b786705
 service:
   main:
     ports:
