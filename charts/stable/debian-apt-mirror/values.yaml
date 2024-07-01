@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: ich777/debian-mirror
-  tag: latest@sha256:25a5c7d23ba0e27b416088938b36b5ac559594f9b2b59a15310692585f10e32f
+  tag: latest@sha256:f403f400567e6db13cad70f2927f8d1429bfc7462a6b54ad2785270f6de9b4a4
 persistence:
   config:
     enabled: true
