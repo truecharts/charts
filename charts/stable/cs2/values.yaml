@@ -1,7 +1,7 @@
 image:
   repository: ich777/steamcmd
   pullPolicy: IfNotPresent
-  tag: cs2@sha256:9788725d588fa121dbae88438072428adf62ba46759ba08add9d430b0aeb4c96
+  tag: cs2@sha256:8c6d968a6e06cba3a55dc20236bf8896e49abf7036b3b98863114a822d53ed84
 
 securityContext:
   container:
