@@ -1,0 +1,9 @@
+{{/* Define the secrets */}}
+{{- define "dendrite.configmap" -}}
+configmap:
+  dendrite-config:
+    enabled: true
+    data:
+      dendrite.yaml: |
+    {{- .Values.dendriteConfig | toYaml | nindent 2 }}
+{{- end -}}
