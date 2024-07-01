@@ -1,0 +1,24 @@
+webdavStorage:
+  shares:
+    - name: share1
+      enabled: true
+      description: My first share
+      hostPath: /mnt/{{.Release.Name }}/share1
+      readOnly: true
+      fixPermissions: true
+    - name: share2
+      enabled: true
+      description: My second share
+      hostPath: /mnt/{{.Release.Name }}/share2
+      readOnly: false
+      fixPermissions: true
+    - name: share3
+      enabled: false
+      description: My third disabled share
+      hostPath: /mnt/{{.Release.Name }}/share3
+      readOnly: true
+      fixPermissions: false
+
+webdavNetwork:
+  http: true
+  httpPort: 30000
