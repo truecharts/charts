@@ -1,0 +1,46 @@
+annotations:
+  truecharts.org/category: productivity
+  truecharts.org/max_helm_version: "3.15"
+  truecharts.org/min_helm_version: "3.11"
+  truecharts.org/train: incubator
+apiVersion: v2
+appVersion: v3.16.0
+dependencies:
+  - name: common
+    version: 23.0.10
+    repository: oci://tccr.io/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+  - name: redis
+    version: 14.0.12
+    repository: oci://tccr.io/truecharts
+    condition: redis.enabled
+    alias: ""
+    tags: []
+    import-values: []
+deprecated: false
+description: Bar Assistant is a self hosted application for managing your home bar with Salt Rim an Vue based web client for used to connecting to Bar Assistant server instance.
+home: https://truecharts.org/charts/incubator/bar-assistant
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/bar-assistant.webp
+keywords:
+  - bar
+  - bar-assistant
+  - alcohol
+  - recipes
+kubeVersion: '>=1.24.0-0'
+maintainers:
+  - name: TrueCharts
+    email: info@truecharts.org
+    url: https://truecharts.org
+name: bar-assistant
+sources:
+  - https://github.com/karlomikus/bar-assistant
+  - https://github.com/karlomikus/vue-salt-rim
+  - https://docs.barassistant.app/
+  - https://github.com/truecharts/charts/tree/master/charts/incubator/bar-assistant
+  - https://hub.docker.com/r/barassistant/server
+  - https://hub.docker.com/r/barassistant/salt-rim
+type: application
+version: 0.0.1

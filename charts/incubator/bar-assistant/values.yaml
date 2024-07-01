@@ -1,0 +1,147 @@
+image:
+  repository: barassistant/server
+  pullPolicy: IfNotPresent
+  tag: v3@sha256:d1e43b5bd2985777657e769ec9427dfe2faa3f0c98421074f06cdaf97c60899d
+saltRimImage:
+  repository: barassistant/salt-rim
+  pullPolicy: IfNotPresent
+  tag: v2@sha256:6d1cf5e69abcdda0af3fbd17612059b8a9bcc071e247c8fb72b622589ad0630d
+meiliSearchImage:
+  repository: getmeili/meilisearch
+  pullPolicy: IfNotPresent
+  tag: v1.8@sha256:f1665e2e5bf27d8e209b2b9d238ef562c0d949c4acbd58c94ad5c0bf2ecd43e3
+  
+barassistant:
+  meili_master_key: masterKey-make-it-long-for-security
+  bar_url: '{{ printf "http://%v-bar:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.bar.ports.main.port }}'
+  search_url: '{{ printf "http://%v-search:%v" (include "tc.v1.common.lib.chart.names.fullname" $) .Values.service.search.ports.main.port }}'
+  
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsUser: 0
+    runAsGroup: 0
+    
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            APP_URL: "{{  .Values.barassistant.bar_url  }}"
+            LOG_CHANNEL: "stderr"
+            MEILISEARCH_KEY: "{{ .Values.barassistant.meili_master_key }}"
+            # needs to be replaced with proper way to do this
+            MEILISEARCH_HOST: "{{  .Values.barassistant.search_url }}"
+            REDIS_HOST: 
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: plainhost
+            ALLOW_REGISTRATION: "true"
+          probes:
+            readiness:
+              enabled: true
+              port: "{{  .Values.service.bar.ports.main.port  }}"
+            liveness:
+              enabled: true
+              port: "{{  .Values.service.bar.ports.main.port  }}"
+            startup:
+              enabled: true
+              port: "{{  .Values.service.bar.ports.main.port  }}"
+  salt-rim:
+    enabled: true
+    type: Deployment
+    podSpec:
+      containers:
+        salt-rim:
+          enabled: true
+          primary: true
+          imageSelector: saltRimImage
+          env:
+            API_URL: "{{  .Values.barassistant.bar_url  }}"
+            MEILISEARCH_URL: "{{  .Values.barassistant.search_url }}"
+            BAR_NAME: "BarAssistant"
+            DESCRIPTION: "This is my Bar Assistant"
+            DEFAULT_LOCALE: "en-US"
+          probes:
+            readiness:
+              enabled: true
+              port: "{{  .Values.service.main.ports.main.port  }}"
+            liveness:
+              enabled: true
+              port: "{{  .Values.service.main.ports.main.port  }}"
+            startup:
+              enabled: true
+              port: "{{  .Values.service.main.ports.main.port  }}"
+          
+  meili-search:
+    enabled: true
+    type: Deployment
+    podSpec:
+      containers:
+        meili-search:
+          enabled: true
+          primary: true
+          imageSelector: meiliSearchImage
+          env:
+            MEILI_MASTER_KEY: "{{ .Values.barassistant.meili_master_key }}"
+            MEILI_ENV: "production"
+          probes:
+            readiness:
+              enabled: true
+              port: "{{  .Values.service.search.ports.main.port  }}"
+            liveness:
+              enabled: true
+              port: "{{  .Values.service.search.ports.main.port  }}"
+            startup:
+              enabled: true
+              port: "{{  .Values.service.search.ports.main.port  }}"
+service:
+  main:
+    targetSelector: salt-rim
+    ports:
+      main:
+        targetSelector: salt-rim
+        targetPort: 8080
+        port: 4000
+  bar:
+    enabled: true
+    targetSelector: main
+    ports:
+      main:
+        enabled: true
+        targetSelector: main
+        targetPort: 3000
+        port: 3000
+  search:
+    enabled: true
+    targetSelector: meili-search
+    ports:
+      main:
+        enabled: true
+        targetSelector: meili-search
+        targetPort: 7700
+        port: 7700
+
+persistence:
+  bar-data:
+    enabled: true
+    targetSelector:
+      main: 
+        main:
+          mountPath: /var/www/cocktails/storage/bar-assistant
+  meilisearch-data:
+    enabled: true
+    targetSelector:
+      main: 
+        meili-search:
+          mountPath: /meili_data
+redis:
+  enabled: true
+  includeCommon: true
+  redisUsername: default
+
+portal:
+  open:
+    enabled: true
