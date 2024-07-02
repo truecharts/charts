@@ -1,0 +1,51 @@
+annotations:
+  max_scale_version: 23.10.2
+  min_scale_version: 23.10.0
+  truecharts.org/SCALE-support: "true"
+  truecharts.org/category: Productivity
+  truecharts.org/max_helm_version: "3.14"
+  truecharts.org/min_helm_version: "3.12"
+  truecharts.org/train: stable
+apiVersion: v2
+appVersion: stable
+dependencies:
+  - name: common
+    version: 17.2.30
+    repository: oci://tccr.io/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+  - name: mariadb
+    version: 12.1.12
+    repository: https://deps.truecharts.org/
+    condition: mariadb.enabled
+    alias: ""
+    tags: []
+    import-values: []
+  - name: redis
+    version: 11.1.16
+    repository: https://deps.truecharts.org
+    condition: redis.enabled
+    alias: ""
+    tags: []
+    import-values: []
+deprecated: false
+description: Server ecosystem for Standard Notes, an end-to-end encrypted notes app.
+home: https://truecharts.org/charts/stable/standardnotes-server
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/standardnotes-web.png
+keywords:
+  - standardnotes-server
+  - Productivity
+kubeVersion: ">=1.24.0-0"
+maintainers:
+  - name: TrueCharts
+    email: info@truecharts.org
+    url: https://truecharts.org
+name: standardnotes-server
+sources:
+  - https://standardnotes.org/
+  - https://github.com/truecharts/charts/tree/master/charts/stable/standardnotes-server
+  - https://hub.docker.com/r/standardnotes/server
+type: application
+version: 1.0.0
