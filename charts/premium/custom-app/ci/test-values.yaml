@@ -1,7 +1,7 @@
 image:
   repository: traefik/whoami
   pullPolicy: IfNotPresent
-  tag: v1.10.2@sha256:7000846753fcc36eb2a1a3a21fe897da09c71e1d3b5381f912ea6e6e1c8871b6
+  tag: v1.10.2@sha256:1474027c316661cdec87df2623e13a41e7e1ce0ba99c24917631de8f300b5420
 
 workload:
   main:
