@@ -33,4 +33,4 @@ sources:
   - https://github.com/techno-tim/littlelink-server
   - https://github.com/truecharts/charts/tree/master/charts/stable/littlelink
 type: application
-version: 15.1.12
+version: 15.1.13
