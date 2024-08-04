@@ -31,4 +31,4 @@ sources:
   - https://ghcr.io/linuxserver/znc
   - https://github.com/truecharts/charts/tree/master/charts/stable/znc
 type: application
-version: 11.1.5
+version: 11.1.6
