@@ -1,6 +1,6 @@
 image:
   repository: baserow/baserow
-  tag: 1.23.0@sha256:32bff9b60b22a8b815e41710e62d8c1245608518f15263661d313507681a757f
+  tag: 1.23.2@sha256:9036518f7c92d3148faba5571758e0d7ffbf35633f1fb7e45306ede88f96bebe
   pullPolicy: IfNotPresent
 securityContext:
   container:
