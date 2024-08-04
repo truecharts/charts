@@ -34,4 +34,4 @@ sources:
   - https://hub.docker.com/r/mikeah/cura-novnc
   - https://ultimaker.com/software/ultimaker-cura
 type: application
-version: 10.1.3
+version: 10.1.4

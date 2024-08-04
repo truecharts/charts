@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: mikeah/cura-novnc
-  tag: latest@sha256:863dc1d78abd5d27b5c961b8d23ff5948610b02ce5ad04459d617f56fbe7ca69
+  tag: latest@sha256:24e3caa390e841b1423421150873992be5b31c0eeb9ba8866e7e4c60a76d9dbb
 securityContext:
   container:
     readOnlyRootFilesystem: false
