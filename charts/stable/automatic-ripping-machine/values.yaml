@@ -1,13 +1,12 @@
 image:
   repository: automaticrippingmachine/automatic-ripping-machine
   pullPolicy: IfNotPresent
-  tag: 2.6.70@sha256:88a6efce8f013ec5c699bb4fd55cfcca6e0a3b5fafcf4fc4ae69e724a3d0a6d0
+  tag: 2.7.2@sha256:467c133834483b2f6f8d6f273849e8c91fbcefca0552478ec8570641814cfdf0
 
 securityContext:
   container:
     runAsNonRoot: false
     readOnlyRootFilesystem: false
-    runAsUser: 0
     runAsGroup: 0
     allowPrivilegeEscalation: true
 
