@@ -6,7 +6,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 24.04.5.2.1
+appVersion: 24.04.6.1.1
 dependencies:
   - name: common
     version: 24.1.5
@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/collabora
   - https://hub.docker.com/r/collabora/code
 type: application
-version: 7.1.5
+version: 7.1.6

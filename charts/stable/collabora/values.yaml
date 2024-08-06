@@ -1,7 +1,7 @@
 image:
   repository: collabora/code
   pullPolicy: IfNotPresent
-  tag: 24.04.5.2.1@sha256:b2cdde5cabb3cfd59933daf3ce55990b258a4a1391d31d54833e436e7b7fc26f
+  tag: 24.04.6.1.1@sha256:6fbd1fd525ecd8d3b7f07934c7fbd97388542221bf32a6f30ff15ea881a481ef
 collabora:
   username: admin
   password: changeme
