@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/collabora
   - https://hub.docker.com/r/collabora/code
 type: application
-version: 7.1.5
+version: 7.1.6
