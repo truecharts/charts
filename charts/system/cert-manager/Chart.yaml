@@ -16,7 +16,7 @@ dependencies:
     tags: []
     import-values: []
   - name: cert-manager
-    version: v1.15.1
+    version: v1.15.2
     repository: https://charts.jetstack.io
     condition: ""
     alias: certmanager

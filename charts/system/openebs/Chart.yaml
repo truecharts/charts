@@ -16,7 +16,7 @@ dependencies:
     tags: []
     import-values: []
   - name: localpv-provisioner
-    version: 4.0.0
+    version: 4.1.0
     repository: https://openebs.github.io/dynamic-localpv-provisioner
     condition: localpv-provisioner.enabled
     alias: ""

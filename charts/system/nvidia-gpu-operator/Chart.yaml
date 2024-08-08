@@ -16,7 +16,7 @@ dependencies:
     tags: []
     import-values: []
   - name: gpu-operator
-    version: v24.3.0
+    version: v24.6.0
     repository: https://helm.ngc.nvidia.com/nvidia
     condition: ""
     alias: gpu-operator

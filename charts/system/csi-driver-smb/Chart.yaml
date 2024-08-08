@@ -17,7 +17,7 @@ dependencies:
     tags: []
     import-values: []
   - name: csi-driver-smb
-    version: v1.14.0
+    version: v1.15.0
     repository: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts
     condition: ""
     alias: csi-driver-smb
