@@ -17,7 +17,7 @@ dependencies:
     tags: []
     import-values: []
   - name: nvidia-device-plugin
-    version: 0.15.1
+    version: 0.16.2
     repository: https://nvidia.github.io/k8s-device-plugin
     condition: ""
     alias: nvdp
