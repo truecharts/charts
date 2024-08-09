@@ -9,14 +9,14 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 24.1.6
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
     tags: []
     import-values: []
   - name: kube-prometheus-stack
-    version: 61.3.2
+    version: 61.3.3
     repository: oci://ghcr.io/prometheus-community/charts
     condition: ""
     alias: kps
