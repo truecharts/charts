@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://github.com/seejohnrun/haste-server
   - https://github.com/truecharts/charts/tree/master/charts/stable/haste-server
 type: application
-version: 15.1.3
+version: 15.1.4

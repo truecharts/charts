@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.10.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -44,4 +44,4 @@ sources:
   - https://github.com/enchant97/hasty-paste/blob/main/docs/install.md
   - https://github.com/truecharts/charts/tree/master/charts/stable/hasty-paste
 type: application
-version: 8.2.2
+version: 8.2.3

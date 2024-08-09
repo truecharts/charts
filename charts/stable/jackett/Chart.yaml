@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.21.2831
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://github.com/geek-cookbook/containers/pkgs/container/jackett
   - https://github.com/truecharts/charts/tree/master/charts/stable/jackett
 type: application
-version: 22.1.3
+version: 22.1.4

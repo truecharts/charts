@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2022.01.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://hub.docker.com/r/deepquestai/deepstack
   - https://www.deepstack.cc/
 type: application
-version: 13.1.3
+version: 13.1.4

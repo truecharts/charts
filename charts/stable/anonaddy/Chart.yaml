@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.2.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -46,4 +46,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/anonaddy
   - https://hub.docker.com/r/anonaddy/anonaddy
 type: application
-version: 22.4.1
+version: 22.4.2

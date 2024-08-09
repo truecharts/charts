@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.8.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://hub.docker.com/r/jvmilazz0/kavita
   - https://www.kavitareader.com
 type: application
-version: 11.1.4
+version: 11.1.5

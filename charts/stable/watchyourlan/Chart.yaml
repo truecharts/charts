@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.0.6
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/watchyourlan
   - https://hub.docker.com/r/aceberg/watchyourlan
 type: application
-version: 10.1.3
+version: 10.1.4

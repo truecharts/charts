@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2.5.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://github.com/babybuddy/babybuddy
   - https://github.com/truecharts/charts/tree/master/charts/stable/babybuddy
 type: application
-version: 18.2.7
+version: 18.2.8

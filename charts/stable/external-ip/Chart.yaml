@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/xavier-hernandez/docker-external-ip
   - https://hub.docker.com/r/xavierh/external-ip
 type: application
-version: 7.1.3
+version: 7.1.4

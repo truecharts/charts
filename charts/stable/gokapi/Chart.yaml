@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.9.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/gokapi
   - https://hub.docker.com/r/f0rc3/gokapi
 type: application
-version: 7.2.1
+version: 7.2.2

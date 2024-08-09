@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.5.3
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://github.com/vexorian/dizquetv
   - https://hub.docker.com/r/vexorian/dizquetv
 type: application
-version: 16.1.4
+version: 16.1.5

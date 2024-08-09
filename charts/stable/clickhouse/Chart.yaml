@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 24.7.3.42
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: includeCommon
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/clickhouse
   - https://hub.docker.com/r/clickhouse/clickhouse-server
 type: application
-version: 14.3.2
+version: 14.3.3

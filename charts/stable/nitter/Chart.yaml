@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -40,4 +40,4 @@ sources:
   - https://github.com/zedeus/nitter
   - https://hub.docker.com/r/zedeus/nitter
 type: application
-version: 8.2.2
+version: 8.2.3

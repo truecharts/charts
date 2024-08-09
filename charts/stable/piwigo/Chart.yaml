@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 14.5.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -42,4 +42,4 @@ sources:
   - https://github.com/linuxserver/docker-piwigo
   - https://github.com/truecharts/charts/tree/master/charts/stable/piwigo
 type: application
-version: 14.4.3
+version: 14.4.4

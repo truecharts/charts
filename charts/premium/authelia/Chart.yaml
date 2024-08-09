@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 4.38.10
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -50,4 +50,4 @@ sources:
   - https://github.com/authelia/chartrepo
   - https://github.com/truecharts/charts/tree/master/charts/premium/authelia
 type: application
-version: 25.2.4
+version: 25.2.5

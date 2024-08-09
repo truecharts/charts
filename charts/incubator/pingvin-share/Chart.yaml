@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.29.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/incubator/pingvin-share
   - https://hub.docker.com/r/stonith404/pingvin-share
 type: application
-version: 1.4.1
+version: 1.4.2

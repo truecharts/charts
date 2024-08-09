@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2024.03.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -47,4 +47,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/friendica
   - https://hub.docker.com/_/friendica
 type: application
-version: 16.3.1
+version: 16.3.2

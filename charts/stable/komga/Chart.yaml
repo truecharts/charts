@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.11.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -36,4 +36,4 @@ sources:
   - https://hub.docker.com/r/gotson/komga
   - https://komga.org/
 type: application
-version: 15.1.4
+version: 15.1.5

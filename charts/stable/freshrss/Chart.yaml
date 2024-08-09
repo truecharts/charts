@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.24.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://github.com/FreshRSS/FreshRSS
   - https://github.com/truecharts/charts/tree/master/charts/stable/freshrss
 type: application
-version: 20.1.7
+version: 20.1.8

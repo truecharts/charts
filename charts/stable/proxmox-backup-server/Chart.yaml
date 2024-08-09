@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 3.1.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/proxmox-backup-server
   - https://hub.docker.com/r/ayufan/proxmox-backup-server
 type: application
-version: 5.1.3
+version: 5.1.4

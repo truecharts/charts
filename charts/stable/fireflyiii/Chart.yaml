@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 6.1.19
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -40,4 +40,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/fireflyiii
   - https://hub.docker.com/r/fireflyiii/core
 type: application
-version: 27.2.3
+version: 27.2.4

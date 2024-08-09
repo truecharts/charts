@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 16.6.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://github.com/xwiki/xwiki-docker
   - https://hub.docker.com/_/xwiki
 type: application
-version: 14.3.1
+version: 14.3.2

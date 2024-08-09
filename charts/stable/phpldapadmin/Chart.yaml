@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.9.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://gitlab.v2.rancher.geohub.space/g3s/i3s/i3s-helm-catalog
   - https://hub.docker.com/r/osixia/phpldapadmin
 type: application
-version: 15.1.3
+version: 15.1.4

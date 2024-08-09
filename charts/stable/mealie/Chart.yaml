@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.11.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/mealie-recipes/mealie
   - https://github.com/truecharts/charts/tree/master/charts/stable/mealie
 type: application
-version: 23.5.0
+version: 23.5.1

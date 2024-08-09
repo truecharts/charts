@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 24.1.7
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -40,4 +40,4 @@ sources:
   - https://github.com/projectsend/projectsend
   - https://github.com/truecharts/charts/tree/master/charts/stable/projectsend
 type: application
-version: 14.3.5
+version: 14.3.6

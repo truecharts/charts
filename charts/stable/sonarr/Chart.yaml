@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 4.0.8.1874
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://github.com/Sonarr/Sonarr
   - https://github.com/truecharts/charts/tree/master/charts/stable/sonarr
 type: application
-version: 23.1.4
+version: 23.1.5

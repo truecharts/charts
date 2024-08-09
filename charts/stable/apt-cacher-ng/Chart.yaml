@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 3.7.4
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://hub.docker.com/r/sameersbn/apt-cacher-ng
   - https://www.unix-ag.uni-kl.de/~bloch/acng/
 type: application
-version: 10.1.3
+version: 10.1.4

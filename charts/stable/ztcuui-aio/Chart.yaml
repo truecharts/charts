@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2024.1.28
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/kmahyyg/ztncui-aio
   - https://github.com/truecharts/charts/tree/master/charts/stable/ztcuui-aio
 type: application
-version: 10.1.3
+version: 10.1.4

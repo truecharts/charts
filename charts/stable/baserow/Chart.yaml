@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.23.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -39,4 +39,4 @@ sources:
   - https://gitlab.com/bramw/baserow/
   - https://hub.docker.com/r/baserow/baserow
 type: application
-version: 14.2.4
+version: 14.2.5
