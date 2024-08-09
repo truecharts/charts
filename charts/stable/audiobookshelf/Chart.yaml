@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2.12.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/audiobookshelf
   - https://hub.docker.com/r/advplyr/audiobookshelf
 type: application
-version: 11.3.2
+version: 11.3.3

@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.9.5
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/benphelps/homepage
   - https://github.com/truecharts/charts/tree/master/charts/stable/homepage
 type: application
-version: 9.2.4
+version: 9.2.5

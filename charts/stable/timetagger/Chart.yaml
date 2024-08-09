@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 24.07.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/timetagger
   - https://timetagger.app
 type: application
-version: 8.2.0
+version: 8.2.1

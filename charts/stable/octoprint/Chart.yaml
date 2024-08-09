@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.10.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/octoprint
   - https://hub.docker.com/r/octoprint/octoprint
 type: application
-version: 15.1.4
+version: 15.1.5

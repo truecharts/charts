@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2.0.18
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/mosquitto
   - https://hub.docker.com/_/eclipse-mosquitto
 type: application
-version: 16.1.6
+version: 16.1.7

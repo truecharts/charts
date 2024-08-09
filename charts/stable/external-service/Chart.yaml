@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 3.20.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/external-service
   - https://hub.docker.com/_/alpine
 type: application
-version: 15.1.6
+version: 15.1.7

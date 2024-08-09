@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 4.1.7
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/qbitmanage
   - https://hub.docker.com/r/bobokun/qbit_manage
 type: application
-version: 10.1.5
+version: 10.1.6

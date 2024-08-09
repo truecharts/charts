@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 3.3.4
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/modsecurity-crs
   - https://hub.docker.com/r/owasp/modsecurity-crs
 type: application
-version: 5.1.4
+version: 5.1.5

@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: latest
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -42,4 +42,4 @@ sources:
   - https://github.com/zyachel/libremdb
   - https://quay.io/pussthecatorg/libremdb
 type: application
-version: 9.2.48
+version: 9.2.49

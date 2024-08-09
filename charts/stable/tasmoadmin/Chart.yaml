@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 4.1.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/TasmoAdmin/TasmoAdmin
   - https://github.com/truecharts/charts/tree/master/charts/stable/tasmoadmin
 type: application
-version: 10.1.4
+version: 10.1.5

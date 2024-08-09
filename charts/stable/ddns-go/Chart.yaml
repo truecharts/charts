@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 6.6.7
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/ddns-go
   - https://hub.docker.com/r/jeessy/ddns-go
 type: application
-version: 12.1.6
+version: 12.1.7

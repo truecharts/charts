@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2024.08.03
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/minio
   - https://hub.docker.com/r/minio/minio
 type: application
-version: 13.4.0
+version: 13.4.1

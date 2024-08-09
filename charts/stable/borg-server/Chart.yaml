@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2.6.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://github.com/AnotherStranger/docker-borg-backup
   - https://github.com/truecharts/charts/tree/master/charts/stable/borg-server
 type: application
-version: 6.3.1
+version: 6.3.2

@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2.23.01
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/tdarr-node
   - https://hub.docker.com/r/haveagitgat/tdarr_node
 type: application
-version: 11.5.1
+version: 11.5.2

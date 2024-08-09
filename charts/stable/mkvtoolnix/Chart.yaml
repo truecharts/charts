@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 24.07.2
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://hub.docker.com/r/jlesage/mkvtoolnix
   - https://mkvtoolnix.download/
 type: application
-version: 12.3.0
+version: 12.3.1

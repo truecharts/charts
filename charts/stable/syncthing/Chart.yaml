@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.27.10
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -33,4 +33,4 @@ sources:
   - https://hub.docker.com/r/syncthing/syncthing
   - https://syncthing.net/
 type: application
-version: 20.1.5
+version: 20.1.6

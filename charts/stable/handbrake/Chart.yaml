@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 24.06.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://handbrake.fr/
   - https://hub.docker.com/r/jlesage/handbrake
 type: application
-version: 23.2.0
+version: 23.2.1

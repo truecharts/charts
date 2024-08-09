@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.54.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -41,4 +41,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/n8n
   - https://hub.docker.com/r/n8nio/n8n
 type: application
-version: 15.9.0
+version: 15.9.1

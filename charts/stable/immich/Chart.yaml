@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.111.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -40,4 +40,4 @@ sources:
   - https://hub.docker.com/r/altran1502/immich-machine-learning
   - https://hub.docker.com/r/altran1502/immich-server
 type: application
-version: 17.5.0
+version: 17.5.1

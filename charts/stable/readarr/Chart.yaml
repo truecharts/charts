@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.3.32.2587
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -38,4 +38,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/readarr
   - https://readarr.com
 type: application
-version: 23.1.4
+version: 23.1.5

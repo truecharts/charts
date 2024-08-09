@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 7.16.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/kovidgoyal/calibre/
   - https://github.com/truecharts/charts/tree/master/charts/stable/calibre
 type: application
-version: 16.4.1
+version: 16.4.2

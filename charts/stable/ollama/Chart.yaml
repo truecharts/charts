@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.3.4
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -35,4 +35,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/ollama
   - https://hub.docker.com/r/ollama/ollama
 type: application
-version: 7.3.11
+version: 7.3.12

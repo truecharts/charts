@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 0.21.3
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/ansible-slskd/slskd
   - https://github.com/truecharts/charts/tree/master/charts/incubator/slskd
 type: application
-version: 2.1.6
+version: 2.1.7

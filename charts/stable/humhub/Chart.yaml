@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.16.1
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -47,4 +47,4 @@ sources:
   - https://ghcr.io/mriedmann/humhub-phponly
   - https://github.com/truecharts/charts/tree/master/charts/stable/humhub
 type: application
-version: 9.4.3
+version: 9.4.4

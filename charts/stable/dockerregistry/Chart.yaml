@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 2.0.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -38,4 +38,4 @@ sources:
   - https://hub.docker.com/_/registry
   - https://registry.hub.docker.com/_/registry/
 type: application
-version: 7.1.5
+version: 7.1.6

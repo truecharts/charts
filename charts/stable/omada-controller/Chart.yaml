@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 5.14.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -32,4 +32,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/omada-controller
   - https://hub.docker.com/r/mbentley/omada-controller
 type: application
-version: 16.2.2
+version: 16.2.3

@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.10.0
 dependencies:
   - name: common
-    version: 24.1.5
+    version: 24.1.9
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
@@ -34,4 +34,4 @@ sources:
   - https://github.com/truecharts/charts/tree/master/charts/incubator/ps3netsrv
   - https://hub.docker.com/r/shawly/ps3netsrv
 type: application
-version: 1.3.0
+version: 1.3.1
