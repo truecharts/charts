@@ -6,7 +6,7 @@ annotations:
   truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 130.0.1
+appVersion: 131.0.2
 dependencies:
   - name: common
     version: 25.0.0
@@ -33,4 +33,4 @@ sources:
   - https://github.com/linuxserver/docker-firefox
   - https://github.com/truecharts/charts/tree/master/charts/stable/firefox
 type: application
-version: 18.1.0
+version: 19.0.0
