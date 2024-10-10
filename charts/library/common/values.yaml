@@ -526,12 +526,12 @@ mongodbClientImage:
 
 postgres15Image:
   repository: ghcr.io/cloudnative-pg/postgresql
-  tag: "15.8"
+  tag: "17.0@sha256:6e581a3ecdcb5e59bfe38b0dd54bf6576d543d2313306711c214eece98772a4e"
   pullPolicy: IfNotPresent
 
 postgres16Image:
   repository: ghcr.io/cloudnative-pg/postgresql
-  tag: "16.4"
+  tag: "17.0@sha256:6e581a3ecdcb5e59bfe38b0dd54bf6576d543d2313306711c214eece98772a4e"
   pullPolicy: IfNotPresent
 
 postgresPostgis15Image:
