@@ -48,4 +48,4 @@ sources:
   - https://hub.docker.com/r/mikefarah/yq
   - https://hub.docker.com/r/traefik/whoami
 type: library
-version: 25.0.0
+version: 26.0.0
