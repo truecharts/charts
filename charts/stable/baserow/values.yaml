@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./values.schema.json
 image:
   repository: docker.io/baserow/baserow
-  tag: 2.0.6@sha256:e2db4d876b4c794dafc71b81c54ad3fd84b13bf19457179ca205fbf3de423740
+  tag: 2.3.4@sha256:97e1818daf5dd64a0a8f7069db4199c2a79b9234cff450b60d97fc99b8c4ab39
   pullPolicy: IfNotPresent
 securityContext:
   container:

@@ -9,7 +9,7 @@ annotations:
   trueforge.org/min_helm_version: "3.14"
   trueforge.org/train: stable
 apiVersion: v2
-appVersion: 2.0.6
+appVersion: 2.3.4
 dependencies:
   - name: common
     version: 29.20.0
@@ -42,5 +42,5 @@ sources:
   - https://gitlab.com/bramw/baserow/
   - https://hub.docker.com/r/baserow/baserow
 type: application
-version: 20.19.0
+version: 20.20.0
 
