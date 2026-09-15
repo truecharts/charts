@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=./values.schema.json
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/libredb/libredb-studio
+  tag: 0.15.0@sha256:4b696f960ac147861c789d2008f41e66a1b1e4bf0c30dcce1c187122d8cb5bfe
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              type: http
+              path: /api/db/health
+            readiness:
+              type: http
+              path: /api/db/health
+            startup:
+              type: http
+              path: /api/db/health
+          env:
+            PORT: "{{ .Values.service.main.ports.main.targetPort }}"
+            STORAGE_PROVIDER: sqlite
+            STORAGE_SQLITE_PATH: /app/data/libredb-storage.db
+            ADMIN_EMAIL: admin@libredb.org
+            # Auth cookies carry the Secure flag in production, and a browser rejects a
+            # Secure cookie that arrives over plain http on a host that is not loopback,
+            # so the login form posts, succeeds and comes straight back. Most installs
+            # here are reached over plain http on a LAN address, so the flag is dropped.
+            # Set this to "true" when TLS terminates at an ingress or a load balancer.
+            AUTH_COOKIE_SECURE: "false"
+service:
+  main:
+    ports:
+      main:
+        port: 10540
+        protocol: http
+        targetPort: 3000
+persistence:
+  data:
+    enabled: true
+    mountPath: /app/data

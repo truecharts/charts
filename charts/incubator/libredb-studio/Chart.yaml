@@ -1,0 +1,41 @@
+annotations:
+  artifacthub.io/links: |-
+    - name: support
+    url: https://discord.com/invite/tVsPTHWTtr
+  truecharts.org/train: incubator
+  trueforge.org/category: Tools-Utilities
+  trueforge.org/max_helm_version: "4.1"
+  trueforge.org/max_kubernetes_version: 1.35.0
+  trueforge.org/min_helm_version: "3.14"
+  trueforge.org/train: incubator
+apiVersion: v2
+appVersion: 0.15.0
+dependencies:
+  - name: common
+    version: 29.20.0
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+deprecated: false
+description: LibreDB Studio is a self-hosted database client for SQL and NoSQL engines that runs in a browser tab.
+home: https://truecharts.org/charts/incubator/libredb-studio
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/libredb-studio.webp
+keywords:
+  - libredb-studio
+  - database
+  - sql
+  - Tools-Utilities
+kubeVersion: '>=1.33.0-0'
+maintainers:
+  - name: TrueCharts
+    email: info@truecharts.org
+    url: https://truecharts.org
+name: libredb-studio
+sources:
+  - https://github.com/libredb/libredb-studio
+  - https://github.com/trueforge-org/truecharts/tree/master/charts/incubator/libredb-studio
+  - https://github.com/libredb/libredb-studio/pkgs/container/libredb-studio
+type: application
+version: 0.1.0
